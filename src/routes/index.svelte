@@ -2,7 +2,11 @@
   import { onMount } from "svelte"
   import OpenAI from "openai-api"
 
-  const openai = new OpenAI(import.meta.env.VITE_OPENAI_API_KEY)
+  const openai = new OpenAI(
+    import.meta.env.VITE_OPENAI_API_KEY
+      ? import.meta.env.VITE_OPENAI_API_KEY
+      : process.env.VITE_OPENAI_API_KEY
+  )
   let message = `Bonjour, je m'appelle Tac, je suis un robot développé par le gouvernement Français pour répondre à vos questions en rapport avec la maladie de la Covid 19. Comment puis-je vous aider ? \n\n`
   onMount(() => {
     document.querySelector("button").addEventListener("click", async () => {
