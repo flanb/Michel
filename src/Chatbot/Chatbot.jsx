@@ -9,32 +9,32 @@ let msg = `Bonjour 👋 Je m’appelle Tac, l’assistant virtuel de l’appli T
 
 const date = new Date()
 
+export async function Request() {
+  const response = document.createElement("div")
+  response.innerHTML = document.querySelector("input").value
+  response.classList.add("me-msg")
+  document.querySelector(".msg-content").appendChild(response)
+  document.querySelector("input").value = ""
+
+  msg += `\n\nQ: ${response.innerHTML}\nA:`
+  console.log(msg)
+  const gptResponse = await openai.complete({
+    engine: "davinci",
+    temperature: 0.9,
+    prompt: msg,
+    maxTokens: 50,
+    topP: 1,
+    frequencyPenalty: 0,
+    presencePenalty: 0.6,
+    stop: ["\n", "A:", "Q:"],
+  })
+  const list = document.createElement("div")
+  list.classList.add("bot-msg")
+  list.innerHTML = gptResponse.data.choices[0].text
+  document.querySelector(".msg-content").appendChild(list)
+  msg += list.innerHTML
+}
 function Chatbot() {
-  async function Request() {
-    const response = document.createElement("div")
-    response.innerHTML = document.querySelector("input").value
-    response.classList.add("me-msg")
-    document.querySelector(".msg-content").appendChild(response)
-    document.querySelector("input").value = ""
-
-    msg += `\n\nQ: ${response.innerHTML}\nA:`
-    console.log(msg)
-    const gptResponse = await openai.complete({
-      engine: "davinci",
-      prompt: msg,
-      maxTokens: 50,
-      topP: 1,
-      frequencyPenalty: 0,
-      presencePenalty: 0.6,
-      stop: ["\n", "A:", "Q:"],
-    })
-    const list = document.createElement("div")
-    list.classList.add("bot-msg")
-    list.innerHTML = gptResponse.data.choices[0].text
-    document.querySelector(".msg-content").appendChild(list)
-    msg += list.innerHTML
-  }
-
   return (
     <div className="chatbot">
       <Header />
@@ -107,6 +107,15 @@ function Chatbot() {
           Bonjour 👋 Je m’appelle Tac, <br /> l’assistant virtuel de l’appli
           TousAntiCovid
         </div>
+        <div className="bot-msg">
+          Vous pouvez me demander toutes les informations liées aux restrictions
+          sanitaires
+        </div>
+        <div className="bot-msg">
+          Vous pouvez cliquer sur les suggestions juste en bas ou alors taper
+          directement votre demande
+        </div>
+        <div className="bot-msg">Comment puis-je vous aider ?</div>
       </div>
       <form
         onSubmit={(e) => {
