@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 4rem;
+  width: 100%;
+  font-weight: 500;
+  .pull {
+    position: absolute;
+    top: 0.75rem;
+    background-color: #c4c4c4;
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 0.25rem;
+  }
+  svg {
+    position: absolute;
+    right: 1rem;
+  }
+}

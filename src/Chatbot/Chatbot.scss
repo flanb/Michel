@@ -1,0 +1,17 @@
+form {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+}
+.tags {
+  display: flex;
+  gap: 0.5rem;
+}
+.tags-label {
+  font-size: 0.75rem;
+}

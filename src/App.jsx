@@ -1,5 +1,5 @@
 import "./App.scss"
-import Chatbot from "./Chatbot"
+import Chatbot from "./Chatbot/Chatbot"
 
 function App() {
   return (
