@@ -6,9 +6,9 @@ export default function Textbar() {
       <input
         type="text"
         placeholder="Ex : Organiser mariage"
-        className="message-input"
+        className="msg-input"
       />
-      <button className="message-submit">
+      <button className="msg-submit">
         <svg
           width="15"
           height="15"

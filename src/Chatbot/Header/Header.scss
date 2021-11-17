@@ -4,8 +4,15 @@
   align-items: center;
   position: fixed;
   height: 4rem;
-  width: 100%;
   font-weight: 500;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: linear-gradient(
+    180deg,
+    #ffffff 72.88%,
+    rgba(255, 255, 255, 0) 100%
+  );
   .pull {
     position: absolute;
     top: 0.75rem;

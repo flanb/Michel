@@ -87,6 +87,7 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
+  font-family: sans-serif;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -114,7 +115,4 @@ ul {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-.me {
-  font-weight: bold;
 }
