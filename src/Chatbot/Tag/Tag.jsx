@@ -8,6 +8,7 @@ export default function Tag(props) {
       onClick={() => {
         document.querySelector(".msg-input").value = props.children
         Request()
+        document.querySelector(".msg-input").value = ""
       }}
     >
       {props.children}

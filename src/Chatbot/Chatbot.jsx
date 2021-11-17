@@ -5,16 +5,19 @@ import Header from "./Header/Header"
 
 import OpenAI from "openai-api"
 const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY)
-let msg = `Bonjour 👋 Je m’appelle Tac, l’assistant virtuel de l’appli TousAntiCovid. Vous pouvez me demander toutes les informations liées aux restrictions sanitaires du gouvernement Français ou des informations sur la maladie Sars-Cov-2 (Covid-19). Vous pouvez cliquer sur les suggestions juste en bas ou alors taper directement votre demande. Comment puis-je vous aider ?\n\n`
+let msg = `Je m’appelle Tac. Vous pouvez me demander toutes les informations liées aux restrictions sanitaires ou des informations sur la maladie Covid-19. Comment puis-je vous aider ?\n\n`
 
 const date = new Date()
 
 export async function Request() {
   const response = document.createElement("div")
-  response.innerHTML = document.querySelector("input").value
+  const content = document.querySelector(".msg-content")
+  let inputValue = document.querySelector("input").value
+
+  response.innerHTML = inputValue
   response.classList.add("me-msg")
-  document.querySelector(".msg-content").appendChild(response)
-  document.querySelector("input").value = ""
+  content.appendChild(response)
+  inputValue = ""
 
   msg += `\n\nQ: ${response.innerHTML}\nA:`
   console.log(msg)
@@ -31,12 +34,13 @@ export async function Request() {
   const list = document.createElement("div")
   list.classList.add("bot-msg")
   list.innerHTML = gptResponse.data.choices[0].text
-  document.querySelector(".msg-content").appendChild(list)
+  content.appendChild(list)
   msg += list.innerHTML
+  content.scrollTop = content.scrollHeight
 }
 function Chatbot() {
   return (
-    <div className="chatbot">
+    <div className="chatbot" style={{ transform: "translateY(100%)"}}>
       <Header />
       <div className="msg-content">
         <div className="head">
