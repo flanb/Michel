@@ -1,18 +1,22 @@
 .chatbot {
-  height: 100vh;
   background-color: white;
   transition: transform 0.5s ease-in-out;
   position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
   form {
     background-color: white;
-    position: fixed;
-    bottom: 0;
     display: flex;
     gap: 0.5rem;
     padding: 1rem;
     width: -webkit-fill-available;
     display: flex;
     flex-direction: column;
+    flex: 0 0 auto;
   }
   .tags {
     display: flex;
@@ -23,13 +27,13 @@
     font-size: 0.75rem;
   }
   .msg-content {
-    height: -webkit-fill-available;
-    padding: 3rem 0 8rem 0;
+    padding-top: 3rem;
     width: 100vw;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     gap: 1rem;
+    flex: 1 1 auto;
     .head {
       padding: 1rem 0;
       display: flex;

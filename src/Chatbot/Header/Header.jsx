@@ -2,7 +2,7 @@ import "./Header.scss"
 
 export default function Header() {
   function handleDrag(e) {
-    console.log(e)
+    console.log(window)
   }
 
   function Close() {
