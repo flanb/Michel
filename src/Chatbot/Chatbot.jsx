@@ -12,12 +12,12 @@ const date = new Date()
 export async function Request() {
   const response = document.createElement("div")
   const content = document.querySelector(".msg-content")
-  let inputValue = document.querySelector("input").value
+  let inputValue = document.querySelector("input")
 
-  response.innerHTML = inputValue
+  response.innerHTML = inputValue.value
   response.classList.add("me-msg")
   content.appendChild(response)
-  inputValue = ""
+  inputValue.value = ""
 
   msg += `\n\nQ: ${response.innerHTML}\nA:`
   console.log(msg)
@@ -40,7 +40,7 @@ export async function Request() {
 }
 function Chatbot() {
   return (
-    <div className="chatbot" style={{ transform: "translateY(100%)"}}>
+    <div className="chatbot" style={{ transform: "translateY(100%)" }}>
       <Header />
       <div className="msg-content">
         <div className="head">
