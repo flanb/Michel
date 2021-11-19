@@ -5,7 +5,7 @@ import Header from "./Header/Header"
 
 import OpenAI from "openai-api"
 const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY)
-let msg = `Je m’appelle Tac. Vous pouvez me demander toutes les informations liées aux restrictions sanitaires ou des informations sur la maladie Covid-19. Comment puis-je vous aider ?\n\n`
+let msg = `Bonjour, je m’appelle Tac. Vous pouvez me poser des questions sur la maladie Covid-19. Comment puis-je vous aider ?\n\nQ: Le masque est-il obligatoire ?\nA: Oui il est obligatoire dans les lieux non soumis au pass sanitaire\n\nQ: Le covid est t-il un complot ?\nA: Non malheureusement la maladie est bien réel et n'a pas été développé par un quelconque laboratoire`
 
 const date = new Date()
 
@@ -25,7 +25,7 @@ export async function Request() {
     engine: "davinci",
     temperature: 0.9,
     prompt: msg,
-    maxTokens: 50,
+    maxTokens: 100,
     topP: 1,
     frequencyPenalty: 0,
     presencePenalty: 0.6,
