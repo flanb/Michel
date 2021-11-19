@@ -40,7 +40,9 @@ export async function Request() {
 }
 function Chatbot() {
   return (
-    <div className="chatbot" style={{ transform: "translateY(100%)" }}>
+    <div className="chatbot" 
+    // style={{ transform: "translateY(100%)" }}
+    >
       <Header />
       <div className="msg-content">
         <div className="head">

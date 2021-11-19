@@ -4,7 +4,7 @@ export default function Header() {
   function handleDrag(e) {
     document.querySelector(".chatbot").style = `transform: translateY(${
       (e.changedTouches[0].clientY * 100) / e.view.innerHeight
-    }%); transition:linear;`
+    }%); transition: linear;`
   }
 
   function Close() {
