@@ -5,7 +5,7 @@ import Header from "./Header/Header"
 
 import OpenAI from "openai-api"
 const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY)
-let msg = `Bonjour, je m’appelle Tac. Vous pouvez me poser des questions sur la maladie Covid-19. Comment puis-je vous aider ?\n\nQ: Le masque est-il obligatoire ?\nA: Oui il est obligatoire dans les lieux non soumis au pass sanitaire\n\nQ: Le covid est t-il un complot ?\nA: Non malheureusement la maladie est bien réel et n'a pas été développé par un quelconque laboratoire`
+let msg = `Bonjour, je m’appelle Tac. Vous pouvez me poser des questions sur la maladie Covid-19. Comment puis-je vous aider ?\n\nQ: Le masque est-il obligatoire ?\nA: Oui il est obligatoire dans les lieux non soumis au pass sanitaire\n\nQ: Le covid est t-il un complot ?\nA: Non malheureusement la maladie est bien réel et n'a pas été développé par un quelconque laboratoire\n\nQ: Comment mettre un masque ?\nA: Le masque doit recouvrir la bouche et le nez.`
 
 const date = new Date()
 
