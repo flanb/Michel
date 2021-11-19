@@ -2,7 +2,9 @@ import "./Header.scss"
 
 export default function Header() {
   function handleDrag(e) {
-    console.log(window)
+    document.querySelector(".chatbot").style = `transform: translateY(${
+      (e.changedTouches[0].clientY * 100) / e.view.innerHeight
+    }%); transition:linear;`
   }
 
   function Close() {
@@ -15,6 +17,7 @@ export default function Header() {
         className="header"
         draggable="true"
         onTouchMove={(e) => handleDrag(e)}
+        onTouchEnd={Close}
       >
         <div className="pull"></div>
         TacBot
