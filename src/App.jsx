@@ -1,4 +1,5 @@
 import "./App.scss"
+import Covoit from "./Covoit/Covoit"
 import Chatbot from "./Chatbot/Chatbot"
 import Btn from "./Btn/Btn"
 
@@ -10,6 +11,7 @@ function App() {
       </button>
       {/* <Btn>Une question ?</Btn> */}
       <Chatbot />
+      <Covoit />
     </>
   )
 }
