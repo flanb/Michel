@@ -1,8 +1,8 @@
 :root {
-  --color-primary: #3E0259;
-  --color-secondary: #BFAED9;
-  --white: #EFEEEF;
-  --black: #1E1E1D;
+  --color-primary: #3e0259;
+  --color-secondary: #bfaed9;
+  --white: #efeeef;
+  --black: #1e1e1d;
 }
 html,
 body,
@@ -109,7 +109,7 @@ section {
 }
 body {
   line-height: 1;
-  background-color: #EFEEEF;
+  background-color: #efeeef;
 }
 ol,
 ul {
