@@ -51,7 +51,7 @@ function Chatbot() {
           <span>
             Parler avec Michel
           </span>
-          <svg
+          {/* <svg
             width="372"
             height="489"
             viewBox="0 0 372 489"
@@ -105,11 +105,11 @@ function Chatbot() {
               strokeMiterlimit="10"
               strokeLinecap="round"
             />
-          </svg>
+          </svg> */}
         </div>
         <div className="bot-msg">
-          Bonjour 👋 Je m’appelle Michel, <br /> Tu peux me poser tout type de
-          questions concernant les événements à venir et bons plan BDE
+          Salut 👋 Je m’appelle Michel, <br /> Tu peux me poser tout type de
+          questions concernant les événements à venir et bons plans BDE
         </div>
         <div className="bot-msg">
           Tu peux cliquer sur les suggestions juste en bas ou alors taper
