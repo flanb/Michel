@@ -27,10 +27,9 @@ function App() {
   const value = useMemo(() => ({ db }), [])
   return (
     <dbContext.Provider value={value}>
-      <button onClick={() => (document.querySelector(".chatbot").style = null)}>
+      <Btn onClick={() => (document.querySelector(".chatbot").style = null)}>
         Une question ?
-      </button>
-      {/* <Btn>Une question ?</Btn> */}
+      </Btn>
       <Chatbot />
       <Covoit />
     </dbContext.Provider>
