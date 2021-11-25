@@ -5,7 +5,7 @@ export default function Textbar() {
     <div className="textbar">
       <input
         type="text"
-        placeholder="Ex : Organiser mariage"
+        placeholder="Ex : Comment vas-tu ?"
         className="msg-input"
       />
       <button className="msg-submit">
