@@ -15,12 +15,10 @@ export default function Header() {
     <>
       <div
         className="header"
-        draggable="true"
         onTouchMove={(e) => handleDrag(e)}
         onTouchEnd={Close}
       >
         <div className="pull"></div>
-        TacBot
         <svg
           width="19"
           height="18"
