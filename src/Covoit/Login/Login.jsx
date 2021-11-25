@@ -13,6 +13,7 @@ export default function Login() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user
+        console.log(user)
         response.current.innerHTML = `connected as ${user.email}`
       })
       .catch((error) => {
