@@ -13,7 +13,7 @@ export default function Register() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // const user = userCredential.user
-        response.current.innerHTML = "Inscription réussi"
+        response.current.innerHTML = "Inscription réussie"
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
@@ -29,7 +29,7 @@ export default function Register() {
   }
   return (
     <>
-      <h1>Inscription</h1>
+      <h2>Inscription</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault()

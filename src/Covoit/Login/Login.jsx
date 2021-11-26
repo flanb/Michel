@@ -14,14 +14,14 @@ export default function Login() {
       .then((userCredential) => {
         const user = userCredential.user
         console.log(user)
-        response.current.innerHTML = `connected as ${user.email}`
+        response.current.innerHTML = `Connecté à ${user.email}`
       })
       .catch((error) => {
         if (error.code === "auth/wrong-password") {
-          response.current.innerHTML = "Wrong password."
+          response.current.innerHTML = "Mot de passe erroné."
         }
         if (error.code === "auth/user-not-found") {
-          response.current.innerHTML = "User not found."
+          response.current.innerHTML = "Utilisateur non trouvé."
         }
 
         const errorCode = error.code
@@ -32,7 +32,7 @@ export default function Login() {
 
   return (
     <>
-      <h1>Connexion</h1>
+      <h2>Connexion</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault()
