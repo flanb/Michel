@@ -1,9 +1,9 @@
 :root {
-  --color-primary: #3E0259;
-  --color-secondary: #BFAED9;
-  --white: #EFEEEF;
-  --black: #1E1E1D;
-  --font: 'Red Hat Display', sans-serif;
+  --color-primary: #3e0259;
+  --color-secondary: #bfaed9;
+  --white: #efeeef;
+  --black: #1e1e1d;
+  --font: "Red Hat Display", sans-serif;
 }
 html,
 body,
@@ -91,7 +91,7 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  font-family: sans-serif;
+  font-family: var(--font);
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -121,7 +121,7 @@ table {
   border-spacing: 0;
 }
 h1 {
-color: #3E0259;
-font-weight: 800;
-font-size: 2rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 2rem;
 }
