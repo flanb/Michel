@@ -3,12 +3,14 @@ import Covoit from "./Covoit/Covoit"
 import Chatbot from "./Chatbot/Chatbot"
 import { createContext, useMemo } from "react"
 import Btn from "./Btn/Btn"
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Home from "./Home/Home"
 
 import { initializeApp } from "firebase/app"
 import { getAnalytics } from "firebase/analytics"
 import { getFirestore } from "firebase/firestore"
+import Login from "./Covoit/Login/Login"
+import Register from "./Covoit/Register/Register"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAb3g-I-blWQV__bsrNCtlIUnvIIERm6Jc",
@@ -32,11 +34,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/covoit" element={<Covoit />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
-
-      <Btn onClick={() => (document.querySelector(".chatbot").style = null)}>
-        Parler avec Michel
-      </Btn>
       <Chatbot />
     </dbContext.Provider>
   )

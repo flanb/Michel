@@ -4,6 +4,8 @@
   --white: #efeeef;
   --black: #1e1e1d;
   --font: "Red Hat Display", sans-serif;
+  --regular: 600;
+  --bold: 800;
 }
 html,
 body,
@@ -120,8 +122,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+button {
+  border: none;
+}
 h1 {
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: var(--bold);
   font-size: 2rem;
 }

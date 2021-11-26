@@ -8,6 +8,7 @@
   right: 0;
   display: flex;
   flex-direction: column;
+  z-index: 100;
   form {
     background-color: white;
     display: flex;
@@ -47,14 +48,14 @@
       }
     }
     .bot-msg {
-      background-color: #EBE4ED;
+      background-color: #ebe4ed;
       max-width: 60vw;
       padding: 0.5rem;
       border-radius: 0 0.5rem 0.5rem 0.5rem;
       margin-left: 0.5rem;
     }
     .me-msg {
-      background-color: #3E0259;
+      background-color: #3e0259;
       max-width: 60vw;
       color: white;
       padding: 0.5rem;
@@ -63,4 +64,14 @@
       margin-right: 0.5rem;
     }
   }
+}
+.btn-float {
+  width: 3rem;
+  height: 3rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 99;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
 }

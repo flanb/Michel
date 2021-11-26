@@ -2,6 +2,7 @@ import "./Chatbot.scss"
 import Textbar from "./Textbar/Textbar"
 import Tag from "./Tag/Tag"
 import Header from "./Header/Header"
+import Btn from "../Btn/Btn"
 
 import OpenAI from "openai-api"
 const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY)
@@ -39,47 +40,51 @@ export async function Request() {
 }
 function Chatbot() {
   return (
-    <div className="chatbot" 
-    style={{ transform: "translateY(100%)" }}
-    >
-      <Header />
-      <div className="msg-content">
-        <div className="head">
-          <span className="date">
-            {date.getHours()}:{date.getMinutes().toString().padStart(2, "0")}
-          </span>
-          <span>
-            Parler avec Michel
-          </span>
-          {
-          //svg
-          }
-        </div>
-        <div className="bot-msg">
-          Salut 👋 Je m’appelle Michel, <br /> Tu peux me poser tout type de
-          questions concernant les événements à venir et bons plans BDE
-        </div>
-        <div className="bot-msg">
-          Tu peux cliquer sur les suggestions juste en bas ou alors taper
-          directement ta demande
-        </div>
-        <div className="bot-msg">Comment puis-je t'aider ?</div>
-      </div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          Request()
-        }}
+    <>
+      <button
+        className="btn-float"
+        onClick={() => (document.querySelector(".chatbot").style = null)}
       >
-        <span className="tags-label">Suggestions de recherche :</span>
-        <div className="tags">
-          <Tag>Bons plans</Tag>
-          <Tag>Prochaine soirée</Tag>
-          <Tag>Cette semaine</Tag>
+        Michel
+      </button>
+      <div className="chatbot" style={{ transform: "translateY(100%)" }}>
+        <Header />
+        <div className="msg-content">
+          <div className="head">
+            <span className="date">
+              {date.getHours()}:{date.getMinutes().toString().padStart(2, "0")}
+            </span>
+            <span>Parler avec Michel</span>
+            {
+              //svg
+            }
+          </div>
+          <div className="bot-msg">
+            Salut 👋 Je m’appelle Michel, <br /> Tu peux me poser tout type de
+            questions concernant les événements à venir et bons plans BDE
+          </div>
+          <div className="bot-msg">
+            Tu peux cliquer sur les suggestions juste en bas ou alors taper
+            directement ta demande
+          </div>
+          <div className="bot-msg">Comment puis-je t'aider ?</div>
         </div>
-        <Textbar />
-      </form>
-    </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            Request()
+          }}
+        >
+          <span className="tags-label">Suggestions de recherche :</span>
+          <div className="tags">
+            <Tag>Bons plans</Tag>
+            <Tag>Prochaine soirée</Tag>
+            <Tag>Cette semaine</Tag>
+          </div>
+          <Textbar />
+        </form>
+      </div>
+    </>
   )
 }
 
