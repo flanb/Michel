@@ -9,8 +9,8 @@ import Home from "./Home/Home"
 import { initializeApp } from "firebase/app"
 import { getAnalytics } from "firebase/analytics"
 import { getFirestore } from "firebase/firestore"
-import Login from "./Covoit/Login/Login"
-import Register from "./Covoit/Register/Register"
+import Login from "./Login/Login"
+import Register from "./Register/Register"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAb3g-I-blWQV__bsrNCtlIUnvIIERm6Jc",
