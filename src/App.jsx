@@ -1,14 +1,14 @@
 import "./App.scss"
 import Covoit from "./Covoit/Covoit"
 import Chatbot from "./Chatbot/Chatbot"
-import { createContext, useMemo } from "react"
-import Btn from "./Btn/Btn"
-import { Routes, Route } from "react-router-dom"
+import { createContext, useEffect, useMemo, useState } from "react"
+import { Routes, Route, Link } from "react-router-dom"
 import Home from "./Home/Home"
 
 import { initializeApp } from "firebase/app"
 import { getAnalytics } from "firebase/analytics"
 import { getFirestore } from "firebase/firestore"
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth"
 import Login from "./Login/Login"
 import Register from "./Register/Register"
 
@@ -28,9 +28,35 @@ getAnalytics(app)
 export const dbContext = createContext(db)
 
 function App() {
+  const [user, setUser] = useState(null)
   const value = useMemo(() => ({ db }), [])
+  const auth = getAuth()
+
+  onAuthStateChanged(auth, (user) => {
+    setUser(user)
+  })
+
+  const logInput =
+    user === null ? (
+      <>
+        <Link to="/login">Se connecter</Link>
+        <Link to="/register">S'inscrire</Link>
+      </>
+    ) : (
+      <button
+        onClick={(e) => {
+          e.preventDefault()
+          signOut(auth)
+        }}
+      >
+        Se déconnecter
+      </button>
+    )
+
   return (
     <dbContext.Provider value={value}>
+      {logInput}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/covoit" element={<Covoit />} />

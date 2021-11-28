@@ -2,14 +2,15 @@ import "./Login.scss"
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { useRef } from "react"
+import { useCookies } from "react-cookie"
 
 export default function Login() {
   const emailInput = useRef(null)
   const passInput = useRef(null)
   const response = useRef(null)
+  const auth = getAuth()
 
   function Loguser(email, password) {
-    const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user
