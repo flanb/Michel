@@ -11,6 +11,7 @@ import { getFirestore, collection, getDocs } from "firebase/firestore"
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth"
 import Login from "./Login/Login"
 import Register from "./Register/Register"
+import Add from "./Covoit/Ads/Add/Add"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAb3g-I-blWQV__bsrNCtlIUnvIIERm6Jc",
@@ -56,6 +57,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/covoit" element={<Covoit />} />
+        <Route path="/covoit/add" element={<Add />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
