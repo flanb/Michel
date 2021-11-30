@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    height: 4rem;
+    height: 2rem;
     font-weight: 500;
     left: 0;
     right: 0;
@@ -25,6 +25,7 @@
     svg {
       position: absolute;
       right: 1rem;
+      top: 1rem;
     }
   }
 }
