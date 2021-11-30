@@ -17,8 +17,12 @@
   left: 0;
   width: 100%;
   z-index: 98;
-  a::before {
-    content: none;
+  a {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    &::before {
+      content: none;
+    }
   }
   svg {
     width: 1.5rem;

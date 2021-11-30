@@ -2,7 +2,7 @@ import "./App.scss"
 import Covoit from "./Covoit/Covoit"
 import Chatbot from "./Chatbot/Chatbot"
 import { createContext, useMemo, useState } from "react"
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route, NavLink } from "react-router-dom"
 import Home from "./Home/Home"
 
 import { initializeApp } from "firebase/app"
@@ -29,6 +29,11 @@ const auth = getAuth()
 getAnalytics(app)
 export const fireContext = createContext(db)
 
+const activeStyle = {
+  backgroundColor: "#bfaed9",
+  color: "#1e1e1d",
+}
+
 function App() {
   const [user, setUser] = useState(null)
   const value = useMemo(() => ({ db, user }), [user])
@@ -50,7 +55,14 @@ function App() {
       <Chatbot />
 
       <div className="navbar">
-        <Link to="/">
+        <NavLink
+          to="/"
+          style={({ isActive }) => {
+            if (isActive) {
+              return activeStyle
+            }
+          }}
+        >
           <svg
             width="20"
             height="22"
@@ -65,8 +77,15 @@ function App() {
             <path d="M7 21H3C2.46957 21 1.96086 20.7893 1.58579 20.4142C1.21071 20.0391 1 19.5304 1 19V8L10 1L19 8V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H13" />
             <path d="M7 21V11H13V21" />
           </svg>
-        </Link>
-        <Link to="/covoit">
+        </NavLink>
+        <NavLink
+          to="/covoit"
+          style={({ isActive }) => {
+            if (isActive) {
+              return activeStyle
+            }
+          }}
+        >
           <svg
             width="21"
             height="21"
@@ -80,8 +99,15 @@ function App() {
           >
             <path d="M1 10L20 1L11 20L9 12L1 10Z" />
           </svg>
-        </Link>
-        <Link to="/user">
+        </NavLink>
+        <NavLink
+          to="/user"
+          style={({ isActive }) => {
+            if (isActive) {
+              return activeStyle
+            }
+          }}
+        >
           <svg
             width="18"
             height="20"
@@ -100,7 +126,7 @@ function App() {
               d="M9 9C11.2091 9 13 7.20914 13 5C13 2.79086 11.2091 1 9 1C6.79086 1 5 2.79086 5 5C5 7.20914 6.79086 9 9 9Z"
             />
           </svg>
-        </Link>
+        </NavLink>
       </div>
     </fireContext.Provider>
   )
