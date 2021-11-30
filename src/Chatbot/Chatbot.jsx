@@ -2,7 +2,6 @@ import "./Chatbot.scss"
 import Textbar from "./Textbar/Textbar"
 import Tag from "./Tag/Tag"
 import Header from "./Header/Header"
-import Btn from "../Btn/Btn"
 
 import OpenAI from "openai-api"
 const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY)

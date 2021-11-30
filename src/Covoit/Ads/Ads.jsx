@@ -1,27 +1,27 @@
 import "./Ads.scss"
 
 import { collection, getDocs } from "firebase/firestore"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { fireContext } from "../../App"
 
 export default function Ads() {
-  const { db, user } = useContext(fireContext)
+  const { db } = useContext(fireContext)
   const [ads, setAds] = useState([])
 
-  function handleClick() {
+  useEffect(() => {
+    setAds([])
     getDocs(collection(db, "ads")).then((ads) => {
       ads.forEach((ad) => {
         setAds((ads) => [...ads, ad.data()])
       })
     })
-  }
-  console.log(ads)
+  }, [db])
   return (
     <>
-      <button onClick={handleClick}>Get ads</button>
       {ads.map((ad) => (
         <div key={ad.id} className="ad">
-          <h2 onClick={() => console.log(ad.description)}>{ad.title}</h2>
+          <h2 title={ad.description}>{ad.title}</h2>
+          <hr />
         </div>
       ))}
     </>
