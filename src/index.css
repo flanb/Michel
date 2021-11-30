@@ -3,7 +3,7 @@
   --color-secondary: #bfaed9;
   --white: #efeeef;
   --black: #1e1e1d;
-  --font: "Red Hat Display", sans-serif;
+  --font: 'Red Hat Display', sans-serif;
   --regular: 600;
   --bold: 800;
 }
@@ -124,11 +124,26 @@ table {
 }
 button {
   border: none;
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-  border-radius: 8px;
-
 }
+a {
+  z-index: 1;
+  position: relative;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+a::before {
+  z-index: -1;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary);
+  transform: skewX(-12deg);
+}
+
 h1 {
   color: var(--color-primary);
   font-weight: var(--bold);

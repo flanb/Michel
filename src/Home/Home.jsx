@@ -9,7 +9,7 @@ export default function Home() {
     <>
       {user ? (
         <>
-          <h1>Bonjour {user.email}</h1>
+          <h1>Bonjour {user.email} 👋</h1>
           <Link to="/covoit">Covoiturage</Link>
         </>
       ) : (

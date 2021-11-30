@@ -1,6 +1,7 @@
 .btn {
-  color: #3e0259;
-  background-color: #bfaed9;
-  border-radius: 10rem;
-  width: 100%;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border-radius: 0.5rem;
+  font-weight: var(--bold);
+  padding: 0.25rem 0.5rem;
 }
