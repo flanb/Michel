@@ -1,17 +1,20 @@
 import "./Home.scss"
 import { Link } from "react-router-dom"
+import { fireContext } from "../App"
+import { useContext } from "react"
 
 export default function Home() {
+  const { user } = useContext(fireContext)
   return (
     <>
-      <h1>Home</h1>
-      <Link to="/covoit">Covoiturage</Link>
-
-      <h1>A la une</h1>
-      <h1>Bons plans</h1>
-      <h1>Avantages adhérent</h1>
-      <h1>Événements</h1>
-      <h1>Nous contacter</h1>
+      {user ? (
+        <>
+          <h1>Bonjour {user.email}</h1>
+          <Link to="/covoit">Covoiturage</Link>
+        </>
+      ) : (
+        <h1>Veuillez vous connecter</h1>
+      )}
     </>
   )
 }

@@ -1,16 +1,17 @@
-import './App.scss'
-import Covoit from './Covoit/Covoit'
-import Chatbot from './Chatbot/Chatbot'
-import { createContext, useMemo } from 'react'
-import Btn from './Btn/Btn'
-import { Routes, Route, Link } from 'react-router-dom'
-import Home from './Home/Home'
+import "./App.scss"
+import Covoit from "./Covoit/Covoit"
+import Chatbot from "./Chatbot/Chatbot"
+import { createContext, useMemo, useState } from "react"
+import { Routes, Route, Link } from "react-router-dom"
+import Home from "./Home/Home"
 
-import { initializeApp } from 'firebase/app'
-import { getAnalytics } from 'firebase/analytics'
-import { getFirestore } from 'firebase/firestore'
-import Login from './Login/Login'
-import Register from './Register/Register'
+import { initializeApp } from "firebase/app"
+import { getAnalytics } from "firebase/analytics"
+import { getFirestore, collection, getDocs } from "firebase/firestore"
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth"
+import Login from "./Login/Login"
+import Register from "./Register/Register"
+import Add from "./Covoit/Ads/Add/Add"
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAb3g-I-blWQV__bsrNCtlIUnvIIERm6Jc',
@@ -23,32 +24,45 @@ const firebaseConfig = {
 }
 const app = initializeApp(firebaseConfig)
 const db = getFirestore()
-// const analytics =
+const auth = getAuth()
 getAnalytics(app)
-export const dbContext = createContext(db)
+export const fireContext = createContext(db)
 
 function App() {
-  const value = useMemo(() => ({ db }), [])
+  const [user, setUser] = useState(null)
+  const value = useMemo(() => ({ db, user }), [user])
+
+  onAuthStateChanged(auth, (user) => {
+    setUser(user)
+  })
+
   return (
-    <dbContext.Provider value={value}>
-      <div className="header">
-        <ul className="menu">
-          <li>
-            <Link to="/login">Se connecter</Link>
-          </li>
-          <li>
-            <Link to="/register">S'inscrire</Link>
-          </li>
-        </ul>
-      </div>
+    <fireContext.Provider value={value}>
+      {user === null ? (
+        <>
+          <Link to="/login">Se connecter</Link>
+          <Link to="/register">S'inscrire</Link>
+        </>
+      ) : (
+        <button
+          onClick={(e) => {
+            e.preventDefault()
+            signOut(auth)
+          }}
+        >
+          Se déconnecter
+        </button>
+      )}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/covoit" element={<Covoit />} />
+        <Route path="/covoit/add" element={<Add />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
       <Chatbot />
-    </dbContext.Provider>
+    </fireContext.Provider>
   )
 }
 

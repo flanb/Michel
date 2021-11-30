@@ -2,19 +2,21 @@ import "./Login.scss"
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Login() {
   const emailInput = useRef(null)
   const passInput = useRef(null)
   const response = useRef(null)
+  const auth = getAuth()
+  const navigate = useNavigate()
 
   function Loguser(email, password) {
-    const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user
-        console.log(user)
         response.current.innerHTML = `Connecté à ${user.email}`
+        navigate("/")
       })
       .catch((error) => {
         if (error.code === "auth/wrong-password") {
@@ -23,10 +25,9 @@ export default function Login() {
         if (error.code === "auth/user-not-found") {
           response.current.innerHTML = "Utilisateur non trouvé."
         }
-
         const errorCode = error.code
         const errorMessage = error.message
-        console.log(errorCode, errorMessage)
+        console.error(errorCode, errorMessage)
       })
   }
 
