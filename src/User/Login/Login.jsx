@@ -44,6 +44,7 @@ export default function Login() {
         <form
           onSubmit={(e) => {
             e.preventDefault()
+            response.current.innerHtml = "Chargement..."
             Loguser(emailInput.current.value, passInput.current.value)
           }}
         >
@@ -75,7 +76,7 @@ export default function Login() {
         </form>
       </div>
       <div className="register">
-        Tu n'as pas encore de compte ?<Link to="/regiter">S'inscrire</Link>
+        Tu n'as pas encore de compte ?<Link to="/register">S'inscrire</Link>
       </div>
     </div>
   )

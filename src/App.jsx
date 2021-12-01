@@ -27,7 +27,7 @@ const app = initializeApp(firebaseConfig)
 const db = getFirestore()
 const auth = getAuth()
 getAnalytics(app)
-export const fireContext = createContext(db)
+export const fireContext = createContext()
 
 const activeStyle = {
   backgroundColor: "#bfaed9",
@@ -36,7 +36,7 @@ const activeStyle = {
 
 function App() {
   const [user, setUser] = useState(null)
-  const value = useMemo(() => ({ db, user }), [user])
+  const value = useMemo(() => ({ auth, db, user }), [user])
 
   onAuthStateChanged(auth, (user) => {
     setUser(user)
