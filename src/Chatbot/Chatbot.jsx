@@ -313,7 +313,7 @@ function Chatbot() {
             }
           </div>
           <div className="bot-msg">
-            Salut 👋 Je m’appelle Michel, <br /> Tu peux me poser tout type de
+            Salut 👋 Je suis Michel, <br /> Tu peux me poser tout type de
             questions concernant les événements à venir et bons plans BDE
           </div>
           <div className="bot-msg">

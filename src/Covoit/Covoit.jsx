@@ -1,5 +1,5 @@
 import "./Covoit.scss"
-import Ads from "./Ads/Ads"
+import Ads from "./Ads/Ads" 
 
 import { Link, useNavigate } from "react-router-dom"
 import { fireContext } from "../App"
@@ -12,7 +12,7 @@ export default function Covoit() {
     <>
       {user ? (
         <>
-          <h1>En voiture Michelle !</h1>
+          <h1>En voiture Michel !</h1>
 
           <Link to="add">Ajouter une annonce</Link>
 
