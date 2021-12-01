@@ -1,6 +1,5 @@
 import "./User.scss"
 
-import { Link } from "react-router-dom"
 import Btn from "../Btn/Btn"
 import { useContext } from "react"
 import { fireContext } from "../App"
@@ -16,7 +15,7 @@ export default function User() {
       {user ? (
         <>
           <h2>Connecté en tant que {user.email}</h2>
-          <Btn onClick={signOut(auth)}>Se déconnecter</Btn>
+          <Btn onClick={() => signOut(auth)}>Se déconnecter</Btn>
         </>
       ) : (
         setTimeout(() => navigate("/login"), 1)

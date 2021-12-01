@@ -2,6 +2,8 @@ import "./Register.scss"
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import { useRef } from "react"
+import Btn from "../../Btn/Btn"
+import { Link } from "react-router-dom"
 
 export default function Register() {
   const emailInput = useRef(null)
@@ -28,29 +30,46 @@ export default function Register() {
       })
   }
   return (
-    <>
-      <h2>Inscription</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          CreateAccount(emailInput.current.value, passInput.current.value)
-        }}
-      >
-        <input
-          type="email"
-          autoComplete="email"
-          placeholder="Email"
-          ref={emailInput}
-        />
-        <input
-          type="password"
-          autoComplete="currentPassword"
-          placeholder="Password"
-          ref={passInput}
-        />
-        <button type="submit">Je m'inscris</button>
-      </form>
-      <span ref={response}></span>
-    </>
+    <div className="register">
+      <div className="form-container-log">
+        <h2>Inscription</h2>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            response.current.innerHtml = "Chargement..."
+            CreateAccount(emailInput.current.value, passInput.current.value)
+          }}
+        >
+          <div className="input-container">
+            <input
+              type="email"
+              id="email"
+              autoComplete="on"
+              placeholder="Email*"
+              required
+              ref={emailInput}
+            />
+            <label htmlFor="email">Email*</label>
+          </div>
+          <div className="input-container">
+            <input
+              type="password"
+              id="password"
+              autoComplete="on"
+              placeholder="Mot de passe*"
+              required
+              minLength="6"
+              ref={passInput}
+            />
+            <label htmlFor="password">Mot de passe*</label>
+          </div>
+          <span ref={response}>Les champs marqués * sont obligatoires</span>
+          <Btn type="submit">Je m'inscris</Btn>
+        </form>
+      </div>
+      <div className="redirect">
+        Tu as dejà un compte ?<Link to="/login">Se connecter</Link>
+      </div>
+    </div>
   )
 }

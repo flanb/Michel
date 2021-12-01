@@ -18,7 +18,7 @@ export default function Login() {
       .then((userCredential) => {
         const user = userCredential.user
         response.current.innerHTML = `Connecté à ${user.email}`
-        navigate("/")
+        navigate("/user")
       })
       .catch((error) => {
         if (error.code === "auth/wrong-password") {
@@ -39,7 +39,7 @@ export default function Login() {
 
   return (
     <div className="login">
-      <div className="form-container">
+      <div className="form-container-log">
         <h2>Connexion</h2>
         <form
           onSubmit={(e) => {
@@ -75,7 +75,7 @@ export default function Login() {
           <Btn type="submit">Je me connecte</Btn>
         </form>
       </div>
-      <div className="register">
+      <div className="redirect">
         Tu n'as pas encore de compte ?<Link to="/register">S'inscrire</Link>
       </div>
     </div>

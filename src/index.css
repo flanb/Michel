@@ -124,6 +124,8 @@ table {
 }
 button {
   border: none;
+  font-family: var(--font);
+  font-size: 1rem;
 }
 .btn,
 a {
@@ -137,7 +139,7 @@ a {
 }
 .btn:active,
 a:active {
- transform: scale(1.025);
+  transform: scale(1.025);
 }
 .btn::before,
 a::before {
