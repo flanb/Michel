@@ -1,9 +1,9 @@
 :root {
   --color-primary: #3e0259;
   --color-secondary: #bfaed9;
-  --white: #efeeef;
-  --black: #1e1e1d;
-  --font: 'Red Hat Display', sans-serif;
+  --white: #ffffff;
+  --black: #161616;
+  --font: "Red Hat Display", sans-serif;
   --regular: 600;
   --bold: 800;
 }
@@ -125,16 +125,24 @@ table {
 button {
   border: none;
 }
+.btn,
 a {
   z-index: 1;
   position: relative;
   color: white;
   padding: 0.5rem 1rem;
   text-decoration: none;
+  font-weight: var(--bold);
+  width: fit-content;
 }
+.btn:active,
+a:active {
+ transform: scale(1.025);
+}
+.btn::before,
 a::before {
   z-index: -1;
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 0;
@@ -144,7 +152,17 @@ a::before {
   background-color: var(--color-primary);
   transform: skewX(-12deg);
 }
-
+input {
+  border-radius: 0.25rem;
+  border: 2px var(--black) solid;
+  padding: 0.5rem 1rem;
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+  background-color: transparent;
+}
+input:focus-visible {
+  transform: scale(1.025);
+}
 h1 {
   color: var(--color-primary);
   font-weight: var(--bold);

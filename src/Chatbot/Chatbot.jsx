@@ -1,37 +1,37 @@
-import './Chatbot.scss'
-import Textbar from './Textbar/Textbar'
-import Tag from './Tag/Tag'
-import Header from './Header/Header'
+import "./Chatbot.scss"
+import Textbar from "./Textbar/Textbar"
+import Tag from "./Tag/Tag"
+import Header from "./Header/Header"
 
-import OpenAI from 'openai-api'
+import OpenAI from "openai-api"
 const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY)
 let msg = `Bonjour, je m’appelle Michel. Tu peux me poser des questions sur les bons plans, prochaines soirées et avantages adhérents. Comment puis-je t'aider ?\n\nQ: Le masque, est-il obligatoire ?\nA: Oui, le masque est obligatoire pour tout les événements prévu\n\nQ: Comment vas-tu ?\nA: Je vais bien, mais je commence à me faire vieux\n\nQ: Quel est la prochaine soirée ?\nA: La prochaine soirée est le bal de Noël qui sera organisé le 16 décembre.\n\nQ: Quel sont les bons plans ?\nA: Tu peux profiter de l'happy hour de 12h à 2h du matin au pub saint aubin sur présentation de ta carte adhérent.`
 const date = new Date()
 
 export async function Request() {
-  const response = document.createElement('div')
-  const content = document.querySelector('.msg-content')
-  let inputValue = document.querySelector('input')
+  const response = document.createElement("div")
+  const content = document.querySelector(".msg-content")
+  let inputValue = document.querySelector(".msg-input")
 
   response.innerHTML = inputValue.value
-  response.classList.add('me-msg')
+  response.classList.add("me-msg")
   content.appendChild(response)
-  inputValue.value = ''
+  inputValue.value = ""
 
   msg += `\n\nQ: ${response.innerHTML}\nA:`
   console.log(msg)
   const gptResponse = await openai.complete({
-    engine: 'davinci',
+    engine: "davinci",
     temperature: 0.9,
     prompt: msg,
     maxTokens: 100,
     topP: 1,
     frequencyPenalty: 0,
     presencePenalty: 0.6,
-    stop: ['\n', 'A:', 'Q:'],
+    stop: ["\n", "A:", "Q:"],
   })
-  const list = document.createElement('div')
-  list.classList.add('bot-msg')
+  const list = document.createElement("div")
+  list.classList.add("bot-msg")
   list.innerHTML = gptResponse.data.choices[0].text
   content.appendChild(list)
   msg += list.innerHTML
@@ -42,7 +42,7 @@ function Chatbot() {
     <>
       <button
         className="btn-float"
-        onClick={() => (document.querySelector('.chatbot').style = null)}
+        onClick={() => (document.querySelector(".chatbot").style = null)}
       >
         <svg
           width="24"
@@ -173,12 +173,12 @@ function Chatbot() {
           />
         </svg>
       </button>
-      <div className="chatbot" style={{ transform: 'translateY(100%)' }}>
+      <div className="chatbot" style={{ transform: "translateY(100%)" }}>
         <Header />
         <div className="msg-content">
           <div className="head">
             <span className="date">
-              {date.getHours()}:{date.getMinutes().toString().padStart(2, '0')}
+              {date.getHours()}:{date.getMinutes().toString().padStart(2, "0")}
             </span>
             <span>Parler avec Michel</span>
             {
