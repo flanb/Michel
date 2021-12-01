@@ -1,13 +1,19 @@
 import "./Covoit.scss"
-import Ads from "./Ads/Ads" 
+import Ads from "./Ads/Ads"
 
 import { Link, useNavigate } from "react-router-dom"
 import { fireContext } from "../App"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 export default function Covoit() {
   const { user } = useContext(fireContext)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login")
+    }
+  }, [user, navigate])
   return (
     <>
       {user ? (
@@ -18,9 +24,7 @@ export default function Covoit() {
 
           <Ads></Ads>
         </>
-      ) : (
-        setTimeout(() => navigate("/login"), 1)
-      )}
+      ) : null}
     </>
   )
 }
