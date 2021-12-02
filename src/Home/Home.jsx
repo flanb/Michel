@@ -9,19 +9,28 @@ export default function Home() {
     <>
       <div className="home">
         <h1>Bonjour {user ? user.email : null}👋</h1>
-
-        <h2>Evenements BDE</h2>
-        <div className="cartes">
-          <p>Calendrier de l'Avent 🎄</p>
-          <p>Mercredi 15 décembre</p>
-          <h3>Loup-Garou géant</h3>
-          <h2></h2>
+        <div className="section">
+          <h2>🎉 Evenements BDE</h2>
+          <div className="cartes">
+            <p>Calendrier de l'Avent 🎄</p>
+            <p>Mercredi 15 décembre</p>
+            <h3>Loup-Garou géant</h3>
+            <h2></h2>
+          </div>
         </div>
-        <h2>En voiture Michel !</h2>
-        <div className="cartes">
-        <h3>Proposer un covoit</h3>
+        <div className="section">
+          <h2>🚗 En voiture Michel !</h2>
+          <div className="cartes">
+            <h3>Proposer un covoit</h3>
+          </div>
         </div>
-        <h2>Actualités du BDE</h2>
+        <div className="section">
+        <h2>🗞️ Actualités du BDE</h2>
+        
+         <div className="cartes">
+            <h2></h2>
+          </div>
+        </div>
       </div>
 
       {/* {ads.map((ad, index) => (
