@@ -124,7 +124,7 @@ table {
 }
 button {
   border: none;
-  font-family: var(--font);
+  font: inherit;
   font-size: 1rem;
 }
 .btn,
@@ -154,7 +154,11 @@ a::before {
   background-color: var(--color-primary);
   transform: skewX(-12deg);
 }
+label {
+  font: inherit;
+}
 input {
+  font: inherit;
   border-radius: 0.25rem;
   border: 1px var(--black) solid;
   padding: 0.5rem 1rem;
@@ -174,10 +178,6 @@ h2 {
   color: var(--color-primary);
   font-weight: var(--bold);
   font-size: 1.5rem;
-}
-input {
-  color: var(--black);
-  border-radius: 0.25rem;
 }
 textarea {
   color: var(--black);
