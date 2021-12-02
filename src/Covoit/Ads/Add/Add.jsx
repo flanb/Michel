@@ -1,8 +1,9 @@
-import { collection, addDoc } from "firebase/firestore"
-import { useContext } from "react"
-import { useNavigate } from "react-router"
-
-import { fireContext } from "../../../App"
+import { collection, addDoc } from 'firebase/firestore'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router'
+import Btn from '../../../Btn/Btn'
+import { fireContext } from '../../../App'
+import './Add.scss'
 
 export default function Add() {
   const { db } = useContext(fireContext)
@@ -11,26 +12,51 @@ export default function Add() {
   function handleSubmit(e) {
     console.log(e)
     e.preventDefault()
-    addDoc(collection(db, "ads"), {
+    addDoc(collection(db, 'ads'), {
       title: e.target[0].value,
       description: e.target[1].value,
     })
-    navigate("/covoit")
+    navigate('/covoit')
   }
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input required type="text" placeholder="Titre" id="test" />
-        <textarea
-          required
-          cols="30"
-          rows="10"
-          placeholder="Description"
-        ></textarea>
-        <button type="submit">Ajouter une annonce</button>
-        
-      </form>
+      <div className="add">
+        <div className="form-container-add">
+          <h1>Publier un trajet</h1>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <label>
+              D'où partez-vous ?
+              <input required type="text" placeholder="Titre" />
+            </label>
+            <label>
+              Où allez-vous ?
+              <input required type="text" placeholder="Titre" id="test" />
+            </label>
+            <label>
+              Temps de trajet ?
+              <input required type="text" placeholder="Titre" id="test" />
+            </label>
+            <label>
+              Quand partez-vous ?
+              <input required type="text" placeholder="Titre" id="test" />
+            </label>
+            <label>
+              à quelle heure souhaitez-vous retouvrer vos passagers ?
+              <input required type="text" placeholder="Titre" id="test" />
+            </label>
+            <label>
+              Combien de passagers pouvez-vous accepter ?
+              <input required type="text" placeholder="Titre" id="test" />
+            </label>
+            <label>
+              Prix ?
+              <input required type="text" placeholder="Titre" id="test" />
+            </label>
+            <Btn type="submit">Ajouter une annonce</Btn>
+          </form>
+        </div>
+      </div>
     </>
   )
 }

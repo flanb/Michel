@@ -156,7 +156,7 @@ a::before {
 }
 input {
   border-radius: 0.25rem;
-  border: 2px var(--black) solid;
+  border: 1px var(--black) solid;
   padding: 0.5rem 1rem;
   outline: none;
   transition: transform 0.2s ease-in-out;
