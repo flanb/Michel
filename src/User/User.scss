@@ -18,6 +18,10 @@
     width: 80%;
     position: relative;
     justify-content: center;
+    svg {
+      position: absolute;
+      right: 1rem;
+    }
   }
   input::placeholder {
     visibility: hidden;
@@ -47,3 +51,14 @@
     }
   }
 }
+
+.user {
+height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+

@@ -18,12 +18,16 @@ export default function User() {
 
   return (
     <>
+    <div className="user">
       {user ? (
         <>
-          <h2>Connecté en tant que {user.email}</h2>
+        <h1>Profil</h1>
+          <p>Connecté en tant que {user.email}</p>
+
           <Btn onClick={() => signOut(auth)}>Se déconnecter</Btn>
         </>
       ) : null}
+      </div>
     </>
   )
 }

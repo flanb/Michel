@@ -5,7 +5,7 @@ import Header from "./Header/Header"
 
 import OpenAI from "openai-api"
 const openai = new OpenAI(process.env.REACT_APP_OPENAI_API_KEY)
-let msg = `Bonjour, je m’appelle Michel. Tu peux me poser des questions sur les bons plans, prochaines soirées et avantages adhérents. Comment puis-je t'aider ?\n\nQ: Le masque, est-il obligatoire ?\nA: Oui, le masque est obligatoire pour tout les événements prévu\n\nQ: Comment vas-tu ?\nA: Je vais bien, mais je commence à me faire vieux\n\nQ: Quel est la prochaine soirée ?\nA: La prochaine soirée est le bal de Noël qui sera organisé le 16 décembre.\n\nQ: Quel sont les bons plans ?\nA: Tu peux profiter de l'happy hour de 12h à 2h du matin au pub saint aubin sur présentation de ta carte adhérent.`
+let msg = `Bonjour, je m’appelle Michel. Tu peux me poser des questions sur les bons plans, prochaines soirées et avantages adhérents. Comment puis-je t'aider ?\n\nQ: Le masque, est-il obligatoire ?\nA: Oui, le masque est obligatoire pour tout les événements prévu.\n\nQ: Comment vas-tu ?\nA: Je vais bien, mais je commence à me faire vieux.\n\nQ: Quel est la prochaine soirée ?\nA: La prochaine soirée est le bal de Noël qui sera organisé le 16 décembre.\n\nQ: Quel sont les bons plans ?\nA: Tu peux profiter de l'happy hour de 12h à 2h du matin au pub saint aubin sur présentation de ta carte adhérent.\n\nQ:Manger ?\nA: Profites d'une boisson offerte lors de l'achat d'un menu chez notre partenaire So Food.\n\nQ:Manger ?\nA: Laisses-toi tenter par une cuisine finement japonaise, démesurément péruvienne chez notre partenaire Coté Sushi.\n\nQ:Boire ?\nA: Un petit air d'Espagne en centre ville à la Bodega Casa Locos notre partenaire.\n\nQ:Boire ?\nA: Le pub à la française St Aubin est le lieu idéal pour boire un petit verre.`
 const date = new Date()
 
 export async function Request() {
@@ -333,6 +333,8 @@ function Chatbot() {
             <Tag>Bons plans</Tag>
             <Tag>Prochaine soirée</Tag>
             <Tag>Cette semaine</Tag>
+            <Tag>Manger</Tag>
+            <Tag>Boire</Tag>
           </div>
           <Textbar />
         </form>
