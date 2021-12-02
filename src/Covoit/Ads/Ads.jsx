@@ -4,32 +4,8 @@ import { collection, getDocs } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
 import { fireContext } from "../../App"
 
-const days = [
-  "Lundi",
-  "Mardi",
-  "Mercredi",
-  "Jeudi",
-  "Vendredi",
-  "Samedi",
-  "Dimanche",
-]
-const months = [
-  "Janvier",
-  "Février",
-  "Mars",
-  "Avril",
-  "Mai",
-  "Juin",
-  "Juillet",
-  "Août",
-  "Septembre",
-  "Octobre",
-  "Novembre",
-  "Décembre",
-]
-
 export default function Ads() {
-  const { db } = useContext(fireContext)
+  const { db, months, days } = useContext(fireContext)
   const [ads, setAds] = useState([])
 
   useEffect(() => {

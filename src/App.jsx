@@ -31,6 +31,30 @@ const auth = getAuth()
 getAnalytics(app)
 export const fireContext = createContext()
 
+const days = [
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi",
+  "Samedi",
+  "Dimanche",
+]
+const months = [
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre",
+]
+
 const activeStyle = {
   backgroundColor: "#bfaed9",
   color: "#1e1e1d",
@@ -38,7 +62,7 @@ const activeStyle = {
 
 function App() {
   const [user, setUser] = useState(null)
-  const value = useMemo(() => ({ auth, db, user }), [user])
+  const value = useMemo(() => ({ days, months, auth, db, user }), [user])
 
   onAuthStateChanged(auth, (user) => {
     setUser(user)
