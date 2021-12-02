@@ -14,8 +14,10 @@ import Register from "./User/Register/Register"
 import Add from "./Covoit/Ads/Add/Add"
 import User from "./User/User"
 
+const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAb3g-I-blWQV__bsrNCtlIUnvIIERm6Jc",
+  apiKey: FIREBASE_API_KEY,
   authDomain: "michel-9f7da.firebaseapp.com",
   projectId: "michel-9f7da",
   storageBucket: "michel-9f7da.appspot.com",

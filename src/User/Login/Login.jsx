@@ -39,12 +39,12 @@ export default function Login() {
 
   return (
     <div className="login">
-      <div className="form-container-log">
+      <div className="form-container-log ">
         <h2>Connexion</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault()
-            response.current.innerHtml = "Chargement..."
+            response.current.innerHTML = "Chargement..."
             Loguser(emailInput.current.value, passInput.current.value)
           }}
         >
