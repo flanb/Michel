@@ -1,0 +1,75 @@
+.ads {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  .ad {
+    margin-top: 1rem;
+    display: grid;
+    grid-template: 1fr min-content / 1fr max-content;
+    background-color: #ebe4ed;
+    border-radius: 0.5rem;
+    width: 80%;
+    padding: 0.75rem 1rem;
+    row-gap: 1rem;
+    .infos {
+      display: grid;
+      grid-template: repeat(3, min-content) / repeat(2, min-content) 1fr;
+      gap: 1rem;
+      .date-start {
+        justify-self: end;
+      }
+      .duration {
+        font-size: 0.75rem;
+        justify-self: end;
+        color: #646464;
+      }
+      .line-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .line {
+        position: absolute;
+        border: 1px solid #646464;
+        height: 3rem;
+      }
+      .point {
+        border-radius: 50%;
+        border: 2px solid var(--black);
+        width: 14px;
+        height: 14px;
+        background-color: #ebe4ed;
+        z-index: 1;
+      }
+      .date-finish {
+        grid-row: 3;
+        justify-self: end;
+        color: #646464;
+      }
+      .point-end {
+        grid-row: 3;
+        border-color: #646464;
+      }
+      .finish {
+        grid-row: 3;
+        color: #646464;
+      }
+    }
+    .user {
+      font-weight: var(--bold);
+    }
+    .date {
+      justify-self: end;
+      font-size: 0.75rem;
+    }
+    .price {
+      font-weight: var(--bold);
+      justify-self: end;
+      &::after {
+        content: "€";
+      }
+    }
+  }
+}

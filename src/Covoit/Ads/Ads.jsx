@@ -16,14 +16,32 @@ export default function Ads() {
       })
     })
   }, [db])
+
   return (
-    <>
-      {ads.map((ad) => (
-        <div key={ad.id} className="ad">
-          {/* <h2 title={ad.description}>{ad.title}</h2> */}
-          <hr />
+    <div className="ads">
+      {ads.map((ad, index) => (
+        <div key={index} className="ad">
+          <div className="infos">
+            <span className="date-start">
+              {new Date(ad.when.seconds).getHours()}
+            </span>
+            <div className="point point-start"></div>
+            <span className="start">{ad.start}</span>
+            <span className="duration">1h00</span>
+            <div className="line-container">
+              <div className="line" />
+            </div>
+            <span className="date-finish">1:00</span>
+            <div className="point point-end"></div>
+            <span className="finish">{ad.finish}</span>
+          </div>
+          <span className="date">
+            {new Date(ad.when.seconds).getTime()} {ad.when.seconds}
+          </span>
+          <span className="user">Michel</span>
+          <span className="price">{ad.price}</span>
         </div>
       ))}
-    </>
+    </div>
   )
 }

@@ -27,6 +27,8 @@ export default function Login() {
           response.current.innerHTML = "Utilisateur non trouvé."
         } else if (error.code === "auth/invalid-email") {
           response.current.innerHTML = "Email invalide."
+        } else if (error.code === "auth/network-request-failed") {
+          response.current.innerHTML = "Erreur de connexion."
         } else {
           response.current.innerHTML = error.message
         }
@@ -36,7 +38,7 @@ export default function Login() {
         console.error(errorCode, errorMessage)
       })
   }
-
+ console.log(auth);
   return (
     <div className="login">
       <div className="form-container-log ">

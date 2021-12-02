@@ -95,6 +95,7 @@ video {
   font: inherit;
   font-family: var(--font);
   vertical-align: baseline;
+  color: var(--black);
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -149,8 +150,8 @@ a::before {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  bottom: 0;
+  right: 0;
   background-color: var(--color-primary);
   transform: skewX(-12deg);
 }
