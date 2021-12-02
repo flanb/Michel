@@ -20,7 +20,7 @@ export default function Covoit() {
         <>
           <h1>En voiture Michel !</h1>
 
-          <Link to="add">Ajouter une annonce</Link>
+          <Link to="add">Publier un trajet</Link>
 
           <Ads></Ads>
         </>
