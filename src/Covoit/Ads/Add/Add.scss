@@ -4,25 +4,31 @@
   flex-direction: column;
   justify-content: center;
   gap: 4rem;
-}
-
-.form-container-add {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  width: 100%;
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    width: 100%;
+    width: 80%;
+    .price {
+      flex-direction: row;
+      align-items: center;
+      white-space: nowrap;
+      input {
+        flex-grow: 1;
+      }
+      &::after {
+        content: '€';
+      }
+    }
   }
+
   label {
     display: flex;
     flex-direction: column;
-    gap:0.5rem;
+    gap: 0.5rem;
     font-weight: var(--bold);
     width: 80%;
   }

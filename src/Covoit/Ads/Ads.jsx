@@ -20,7 +20,7 @@ export default function Ads() {
     <>
       {ads.map((ad) => (
         <div key={ad.id} className="ad">
-          <h2 title={ad.description}>{ad.title}</h2>
+          {/* <h2 title={ad.description}>{ad.title}</h2> */}
           <hr />
         </div>
       ))}
