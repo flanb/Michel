@@ -4,6 +4,30 @@ import { collection, getDocs } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
 import { fireContext } from "../../App"
 
+const days = [
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi",
+  "Samedi",
+  "Dimanche",
+]
+const months = [
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre",
+]
+
 export default function Ads() {
   const { db } = useContext(fireContext)
   const [ads, setAds] = useState([])
@@ -19,29 +43,33 @@ export default function Ads() {
 
   return (
     <div className="ads">
-      {ads.map((ad, index) => (
-        <div key={index} className="ad">
-          <div className="infos">
-            <span className="date-start">
-              {new Date(ad.when.seconds).getHours()}
-            </span>
-            <div className="point point-start"></div>
-            <span className="start">{ad.start}</span>
-            <span className="duration">1h00</span>
-            <div className="line-container">
-              <div className="line" />
+      {ads.map((ad, index) => {
+        const date = new Date(ad.when.seconds * 1000)
+        return (
+          <div key={index} className="ad">
+            <div className="infos">
+              <span className="date-start">
+                {date.getHours()}:
+                {date.getMinutes().toString().padStart(2, "0")}
+              </span>
+              <div className="point point-start"></div>
+              <span className="start">{ad.start}</span>
+              <span className="duration">1h00</span>
+              <div className="line-container">
+                <div className="line" />
+              </div>
+              <span className="date-finish">1:00</span>
+              <div className="point point-end"></div>
+              <span className="finish">{ad.finish}</span>
             </div>
-            <span className="date-finish">1:00</span>
-            <div className="point point-end"></div>
-            <span className="finish">{ad.finish}</span>
+            <span className="date">
+              {days[date.getDay()]} {date.getDate()} {months[date.getMonth()]}
+            </span>
+            <span className="user">Michel</span>
+            <span className="price">{ad.price}</span>
           </div>
-          <span className="date">
-            {new Date(ad.when.seconds).getTime()} {ad.when.seconds}
-          </span>
-          <span className="user">Michel</span>
-          <span className="price">{ad.price}</span>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
