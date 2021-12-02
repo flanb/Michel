@@ -65,7 +65,7 @@ export default function Ads() {
             <span className="date">
               {days[date.getDay()]} {date.getDate()} {months[date.getMonth()]}
             </span>
-            <span className="user">Michel</span>
+            <span className="name">Michel</span>
             <span className="price">{ad.price}</span>
           </div>
         )
