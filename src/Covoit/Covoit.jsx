@@ -1,9 +1,9 @@
-import "./Covoit.scss"
-import Ads from "./Ads/Ads"
+import './Covoit.scss'
+import Ads from './Ads/Ads'
 
-import { Link, useNavigate } from "react-router-dom"
-import { fireContext } from "../App"
-import { useContext, useEffect } from "react"
+import { Link, useNavigate } from 'react-router-dom'
+import { fireContext } from '../App'
+import { useContext, useEffect } from 'react'
 
 export default function Covoit() {
   const { cookies } = useContext(fireContext)

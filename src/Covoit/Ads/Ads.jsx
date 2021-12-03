@@ -3,6 +3,7 @@ import "./Ads.scss"
 import { collection, getDocs } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
 import { fireContext } from "../../App"
+import { Link } from "react-router-dom"
 
 const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
 
@@ -32,7 +33,7 @@ export default function Ads() {
       {ads.map((ad, index) => {
         const date = new Date(ad.when.seconds * 1000)
         return (
-          <div key={index} className="ad">
+          <Link to="add" key={index} className="ad">
             <div className="infos">
               <span className="date-start">
                 {date.getHours()}:
@@ -53,7 +54,7 @@ export default function Ads() {
             </span>
             <span className="name">Michel</span>
             <span className="price">{ad.price}</span>
-          </div>
+          </Link >
         )
       })}
     </div>

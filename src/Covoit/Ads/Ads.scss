@@ -3,14 +3,18 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 80%;
   .ad {
     display: grid;
     grid-template: 1fr min-content / 1fr max-content;
     background-color: #ebe4ed;
     border-radius: 0.5rem;
-    width: 80%;
+    width: 100%;
     padding: 0.75rem 1rem;
     row-gap: 1rem;
+    &::before {
+      content: unset;
+    }
     .infos {
       display: grid;
       grid-template: repeat(3, min-content) / repeat(2, min-content) 1fr;
@@ -67,7 +71,7 @@
       font-weight: var(--bold);
       justify-self: end;
       &::after {
-        content: "€";
+        content: '€';
       }
     }
   }

@@ -114,6 +114,7 @@ section {
 body {
   line-height: 1;
   background-color: var(--white);
+  padding-bottom: 6rem;
 }
 ol,
 ul {
@@ -174,8 +175,7 @@ h1 {
   color: var(--color-primary);
   font-weight: var(--bold);
   font-size: 2rem;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 h2 {
   color: var(--color-primary);
