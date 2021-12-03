@@ -5,19 +5,19 @@
   gap: 3rem;
   padding-top: 2rem;
   .cartes {
+  margin-top: 1rem;
     background-color: #ebe4ed;
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
   }
   .section {
     width: 80%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    
   }
   .hello {
     display: flex;
     align-items: center;
+    width: 80%;
   }
   .cartes-bouton {
     background-color: var(--color-primary);
