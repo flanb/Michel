@@ -1,10 +1,11 @@
 import "./Login.scss"
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
-import { useRef } from "react"
+import { useContext, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import Btn from "../../Btn/Btn"
 import { Link } from "react-router-dom"
+import { fireContext } from "../../App"
 
 export default function Login() {
   const emailInput = useRef(null)
@@ -12,11 +13,13 @@ export default function Login() {
   const response = useRef(null)
   const auth = getAuth()
   const navigate = useNavigate()
+  const { setCookie } = useContext(fireContext)
 
   function Loguser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user
+        setCookie("user", user, { path: "/" })
         response.current.innerHTML = `Connecté à ${user.email}`
         navigate("/user")
       })

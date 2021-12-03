@@ -13,6 +13,7 @@ import Login from "./User/Login/Login"
 import Register from "./User/Register/Register"
 import Add from "./Covoit/Ads/Add/Add"
 import User from "./User/User"
+import { useCookies } from "react-cookie"
 
 const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
 
@@ -54,7 +55,6 @@ const months = [
   "Novembre",
   "Décembre",
 ]
-
 const activeStyle = {
   backgroundColor: "#bfaed9",
   color: "#1e1e1d",
@@ -62,7 +62,11 @@ const activeStyle = {
 
 function App() {
   const [user, setUser] = useState(null)
-  const value = useMemo(() => ({ days, months, auth, db, user }), [user])
+  const [cookies, setCookie] = useCookies(["user"])
+  const value = useMemo(
+    () => ({ cookies, setCookie, days, months, auth, db, user }),
+    [user, cookies, setCookie]
+  )
 
   onAuthStateChanged(auth, (user) => {
     setUser(user)

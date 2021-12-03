@@ -6,20 +6,21 @@ import { fireContext } from '../App'
 import { useContext, useEffect } from 'react'
 
 export default function Covoit() {
-  const { user } = useContext(fireContext)
+  const { cookies } = useContext(fireContext)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!user) {
-      navigate('/login')
+    if (!cookies.user) {
+      navigate("/login")
     }
-  }, [user, navigate])
+  }, [navigate, cookies.user])
   return (
     <>
       <div className="covoit">
-        {user ? (
+        {cookies.user ? (
           <>
             <h1>En voiture Michel !</h1>
+
             <Link to="add">Publier un trajet</Link>
 
             <Ads></Ads>
