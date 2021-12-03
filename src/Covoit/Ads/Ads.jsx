@@ -1,9 +1,9 @@
-import "./Ads.scss"
+import './Ads.scss'
 
-import { collection, getDocs } from "firebase/firestore"
-import { useContext, useEffect, useState } from "react"
-import { fireContext } from "../../App"
-import { Link } from "react-router-dom"
+import { collection, getDocs } from 'firebase/firestore'
+import { useContext, useEffect, useState } from 'react'
+import { fireContext } from '../../App'
+import { Link } from 'react-router-dom'
 
 export default function Ads() {
   const { db, months, days } = useContext(fireContext)
@@ -11,7 +11,7 @@ export default function Ads() {
 
   useEffect(() => {
     setAds([])
-    getDocs(collection(db, "ads")).then((ads) => {
+    getDocs(collection(db, 'ads')).then((ads) => {
       ads.forEach((ad) => {
         setAds((ads) => [...ads, ad.data()])
       })
@@ -27,7 +27,7 @@ export default function Ads() {
             <div className="infos">
               <span className="date-start">
                 {date.getHours()}:
-                {date.getMinutes().toString().padStart(2, "0")}
+                {date.getMinutes().toString().padStart(2, '0')}
               </span>
               <div className="point point-start"></div>
               <span className="start">{ad.start}</span>
@@ -44,7 +44,7 @@ export default function Ads() {
             </span>
             <span className="name">Michel</span>
             <span className="price">{ad.price}</span>
-          </Link >
+          </Link>
         )
       })}
     </div>

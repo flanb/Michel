@@ -181,9 +181,7 @@ function Chatbot() {
               {date.getHours()}:{date.getMinutes().toString().padStart(2, '0')}
             </span>
             <span>Parler avec Michel</span>
-            {
-              <img src="/logo.svg" alt="Logo"/>
-            }
+            {<img src="/logo.svg" alt="Logo" />}
           </div>
           <div className="bot-msg">
             Salut 👋 Je suis Michel, <br /> Tu peux me poser tout type de
