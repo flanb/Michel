@@ -186,3 +186,6 @@ textarea {
   color: var(--black);
   border-radius: 0.25rem;
 }
+p{
+  line-height: 140%;
+}
