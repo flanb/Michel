@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from 'react'
 import { fireContext } from '../../App'
 import { Link } from 'react-router-dom'
 
+const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
+
 export default function Ads() {
   const { db, months, days } = useContext(fireContext)
   const [ads, setAds] = useState([])
@@ -17,6 +19,14 @@ export default function Ads() {
       })
     })
   }, [db])
+
+  useEffect(() => {
+    fetch(
+      `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=Paris&origins=Bordeaux&key=${FIREBASE_API_KEY}`
+    ).then((response) => {
+      console.log(response)
+    })
+  }, [])
 
   return (
     <div className="ads">

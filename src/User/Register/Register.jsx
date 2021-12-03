@@ -13,8 +13,7 @@ export default function Register() {
   function CreateAccount(email, password) {
     const auth = getAuth()
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // const user = userCredential.user
+      .then(() => {
         response.current.innerHTML = "Inscription réussie"
       })
       .catch((error) => {
@@ -73,9 +72,9 @@ export default function Register() {
               stroke-linecap="round"
               stroke-linejoin="round"
               onClick={() => {
-                passInput.current.type === 'password'
-                  ? (passInput.current.type = 'text')
-                  : (passInput.current.type = 'password')
+                passInput.current.type === "password"
+                  ? (passInput.current.type = "text")
+                  : (passInput.current.type = "password")
               }}
             >
               <path d="M1 9C1 9 5 1 12 1C19 1 23 9 23 9C23 9 19 17 12 17C5 17 1 9 1 9Z" />
