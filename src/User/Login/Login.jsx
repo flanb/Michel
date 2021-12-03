@@ -1,10 +1,10 @@
-import './Login.scss'
+import "./Login.scss"
 
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Btn from '../../Btn/Btn'
-import { Link } from 'react-router-dom'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
+import Btn from "../../Btn/Btn"
+import { Link } from "react-router-dom"
 
 export default function Login() {
   const emailInput = useRef(null)
@@ -18,7 +18,7 @@ export default function Login() {
       .then((userCredential) => {
         const user = userCredential.user
         response.current.innerHTML = `Connecté à ${user.email}`
-        navigate('/user')
+        navigate("/user")
       })
       .catch((error) => {
         if (error.code === "auth/wrong-password") {
@@ -32,13 +32,12 @@ export default function Login() {
         } else {
           response.current.innerHTML = error.message
         }
-        response.current.style.color = 'var(--color-primary)'
+        response.current.style.color = "var(--color-primary)"
         const errorCode = error.code
         const errorMessage = error.message
         console.error(errorCode, errorMessage)
       })
   }
- console.log(auth);
   return (
     <div className="login">
       <div className="form-container-log ">
@@ -46,7 +45,7 @@ export default function Login() {
         <form
           onSubmit={(e) => {
             e.preventDefault()
-            response.current.innerHTML = 'Chargement...'
+            response.current.innerHTML = "Chargement..."
             Loguser(emailInput.current.value, passInput.current.value)
           }}
         >
@@ -80,13 +79,13 @@ export default function Login() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               stroke="currentColor"
-              stroke-width="1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               onClick={() => {
-                passInput.current.type === 'password'
-                  ? (passInput.current.type = 'text')
-                  : (passInput.current.type = 'password')
+                passInput.current.type === "password"
+                  ? (passInput.current.type = "text")
+                  : (passInput.current.type = "password")
               }}
             >
               <path d="M1 9C1 9 5 1 12 1C19 1 23 9 23 9C23 9 19 17 12 17C5 17 1 9 1 9Z" />
