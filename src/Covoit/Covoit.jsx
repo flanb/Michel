@@ -16,6 +16,7 @@ export default function Covoit() {
   }, [user, navigate])
   return (
     <>
+    <div className="covoit">
       {user ? (
         <>
           <h1>En voiture Michel !</h1>
@@ -23,8 +24,10 @@ export default function Covoit() {
           <Link to="add">Publier un trajet</Link>
 
           <Ads></Ads>
+          
         </>
       ) : null}
+      </div>
     </>
   )
 }
