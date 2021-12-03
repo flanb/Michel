@@ -1,3 +1,8 @@
 .covoit {
-padding-top: 2rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-gap: 2rem;
+  align-items: center;
 }

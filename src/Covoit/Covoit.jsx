@@ -1,9 +1,9 @@
-import "./Covoit.scss"
-import Ads from "./Ads/Ads"
+import './Covoit.scss'
+import Ads from './Ads/Ads'
 
-import { Link, useNavigate } from "react-router-dom"
-import { fireContext } from "../App"
-import { useContext, useEffect } from "react"
+import { Link, useNavigate } from 'react-router-dom'
+import { fireContext } from '../App'
+import { useContext, useEffect } from 'react'
 
 export default function Covoit() {
   const { user } = useContext(fireContext)
@@ -11,22 +11,20 @@ export default function Covoit() {
 
   useEffect(() => {
     if (!user) {
-      navigate("/login")
+      navigate('/login')
     }
   }, [user, navigate])
   return (
     <>
-    <div className="covoit">
-      {user ? (
-        <>
-          <h1>En voiture Michel !</h1>
+      <div className="covoit">
+        {user ? (
+          <>
+            <h1>En voiture Michel !</h1>
+            <Link to="add">Publier un trajet</Link>
 
-          <Link to="add">Publier un trajet</Link>
-
-          <Ads></Ads>
-          
-        </>
-      ) : null}
+            <Ads></Ads>
+          </>
+        ) : null}
       </div>
     </>
   )
