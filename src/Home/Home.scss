@@ -14,14 +14,26 @@
     margin-top: 1rem;
     width: 80%;
   }
-  .h2 {
-    font-size: 2rem;
-    align-items: inherit;
-  }
   .hello {
     margin-top: 1rem;
     width: 80%;
-    display:flex;
+    display: flex;
     align-items: center;
   }
+  .cartes-bouton {
+    margin-top: 1rem;
+    background-color: #ebe4ed;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+  }
+}
+h3 {
+  color: var(--color-primary);
+  font-weight: var(--bold);
+  font-size: 1rem;
+}
+.covoit-section a::before {
+  content: unset;
 }
