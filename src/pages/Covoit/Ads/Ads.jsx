@@ -2,7 +2,7 @@ import './Ads.scss'
 
 import { collection, getDocs } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
-import { fireContext } from "../../App"
+import { fireContext } from "../../../App"
 import { Link } from "react-router-dom"
 // import { Loader } from "@googlemaps/js-api-loader"
 

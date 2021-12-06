@@ -3,9 +3,9 @@ import "./Login.scss"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { useContext, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import Btn from "../../Btn/Btn"
+import Btn from "../../../components/Btn/Btn"
 import { Link } from "react-router-dom"
-import { fireContext } from "../../App"
+import { fireContext } from "../../../App"
 
 export default function Login() {
   const emailInput = useRef(null)

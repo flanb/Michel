@@ -2,7 +2,7 @@ import "./Register.scss"
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import { useRef } from "react"
-import Btn from "../../Btn/Btn"
+import Btn from "../../../components/Btn/Btn"
 import { Link } from "react-router-dom"
 
 export default function Register() {

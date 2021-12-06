@@ -1,8 +1,8 @@
 import "./User.scss"
 
-import Btn from "../Btn/Btn"
+import Btn from "../../components/Btn/Btn"
 import { useContext, useEffect } from "react"
-import { fireContext } from "../App"
+import { fireContext } from "../../App"
 import { signOut } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 

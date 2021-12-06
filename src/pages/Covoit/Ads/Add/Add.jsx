@@ -1,9 +1,9 @@
 import { collection, addDoc } from "firebase/firestore"
 import { useContext } from "react"
 import { useNavigate } from "react-router"
-import Btn from "../../../Btn/Btn"
+import Btn from "../../../../components/Btn/Btn"
 import { Link } from "react-router-dom"
-import { fireContext } from "../../../App"
+import { fireContext } from "../../../../App"
 import "./Add.scss"
 
 export default function Add() {

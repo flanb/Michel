@@ -1,5 +1,5 @@
 import "./Home.scss"
-import { fireContext } from "../App"
+import { fireContext } from "../../App"
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 
