@@ -3,18 +3,20 @@ import "./Register.scss"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import { useRef } from "react"
 import Btn from "../../../components/Btn/Btn"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Register() {
   const emailInput = useRef(null)
   const passInput = useRef(null)
   const response = useRef(null)
+  const navigate = useNavigate()
 
   function CreateAccount(email, password) {
     const auth = getAuth()
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
         response.current.innerHTML = "Inscription réussie"
+        navigate("/login")
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {

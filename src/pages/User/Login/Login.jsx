@@ -21,7 +21,7 @@ export default function Login() {
         const user = userCredential.user
         setCookie("user", user, { path: "/" })
         response.current.innerHTML = `Connecté à ${user.email}`
-        navigate("/user")
+        navigate(-1)
       })
       .catch((error) => {
         if (error.code === "auth/wrong-password") {
