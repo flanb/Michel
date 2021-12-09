@@ -12,42 +12,48 @@ const loader = new Loader({
   version: "weekly",
 })
 let distanceService
-let duration = ""
 loader.load().then((google) => {
   distanceService = new google.maps.DistanceMatrixService()
 })
 
 export default function Ads() {
   const { db, months, days } = useContext(fireContext)
-  const [ads, setAds] = useState([])
+  const [adverts, setAdverts] = useState([])
 
   useEffect(() => {
-    setAds([])
+    setAdverts([])
+    //collect all adverts
     getDocs(collection(db, "ads")).then((ads) => {
       ads.forEach((ad) => {
-        setAds((ads) => [...ads, ad.data()])
+        //collect duration between start and finish location
+        distanceService.getDistanceMatrix(
+          {
+            origins: [ad.data().start],
+            destinations: [ad.data().finish],
+            travelMode: "DRIVING",
+          },
+          (response) => {
+            //convet to array
+            setAdverts((adverts) => [
+              ...adverts,
+              {
+                ...ad.data(),
+                duration: response?.rows[0]?.elements[0]?.duration?.value,
+              },
+            ])
+          }
+        )
       })
     })
   }, [db])
 
   return (
     <div className="ads">
-      {ads.map((ad, index) => {
+      {adverts.map((ad, index) => {
         const date = new Date(ad.when.seconds * 1000)
+        const duration = new Date(ad.duration * 1000)
+        const endDate = new Date(date.getTime() + duration.getTime())
 
-        // if (distanceService) {
-        //   distanceService.getDistanceMatrix(
-        //     {
-        //       origins: [ad.start],
-        //       destinations: [ad.finish],
-        //       travelMode: "DRIVING",
-        //     },
-        //     (response) => {
-        //        duration = response.rows[0].elements[0].duration.text
-        //     }
-        //   )
-        // }
-        console.log(duration)
         return (
           <Link to="add" key={index} className="ad">
             <div className="infos">
@@ -57,11 +63,23 @@ export default function Ads() {
               </span>
               <div className="point point-start"></div>
               <span className="start">{ad.start}</span>
-              <span className="duration">1h00</span>
+              <span className="duration">
+                {duration.getHours()
+                  ? duration.getHours() +
+                    "h" +
+                    duration.getMinutes().toString().padStart(2, "0")
+                  : "Trajet"}
+              </span>
               <div className="line-container">
                 <div className="line" />
               </div>
-              <span className="date-finish">1:00</span>
+              <span className="date-finish">
+                {duration.getHours()
+                  ? endDate.getHours() +
+                    ":" +
+                    endDate.getMinutes().toString().padStart(2, "0")
+                  : "inconnu"}
+              </span>
               <div className="point point-end"></div>
               <span className="finish">{ad.finish}</span>
             </div>
