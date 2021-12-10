@@ -59,4 +59,11 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  b {
+    font-weight: var(--bold);
+  }
+  form {
+    display: flex;
+    gap: 1rem;
+  }
 }

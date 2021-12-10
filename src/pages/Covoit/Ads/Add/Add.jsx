@@ -18,6 +18,9 @@ export default function Add() {
       finish: e.target[1].value,
       when: new Date(e.target[2].value),
       price: parseFloat(e.target[3].value),
+      user: cookies.user.displayName
+        ? cookies.user.displayName
+        : cookies.user.email,
     })
     navigate("/covoit")
   }

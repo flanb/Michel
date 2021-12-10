@@ -17,21 +17,19 @@ export default function User() {
     }
   }, [cookies.user, navigate])
 
-
   function handleSubmit(e) {
     e.preventDefault()
     updateProfile(auth.currentUser, {
       displayName: e.target[0].value,
     })
       .then(() => {
-        console.log(cookies.user)
         setCookie("user", {
           ...cookies.user,
           displayName: e.target[0].value,
         })
       })
       .catch((error) => {
-        console.log(error)
+        console.error(error)
       })
   }
 
@@ -43,9 +41,11 @@ export default function User() {
             <h1>Profil</h1>
             <p>
               Connecté en tant que{" "}
-              {cookies.user.displayName 
-                ? cookies.user.displayName
-                : cookies.user.email}
+              <b>
+                {cookies.user.displayName
+                  ? cookies.user.displayName
+                  : cookies.user.email}
+              </b>
             </p>
             <form onSubmit={(e) => handleSubmit(e)}>
               <input
