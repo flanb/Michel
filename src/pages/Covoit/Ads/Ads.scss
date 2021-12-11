@@ -55,7 +55,11 @@
         grid-row: 3;
         border-color: #646464;
       }
+      .start {
+        font-size: 0.9rem;
+      }
       .finish {
+        font-size: 0.9rem;
         grid-row: 3;
         color: #646464;
       }
@@ -71,7 +75,7 @@
       font-weight: var(--bold);
       justify-self: end;
       &::after {
-        content: '€';
+        content: "€";
       }
     }
   }

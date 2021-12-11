@@ -1,22 +1,26 @@
 import "./Register.scss"
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-import { useRef } from "react"
+import { useContext, useRef } from "react"
 import Btn from "../../../components/Btn/Btn"
+import { fireContext } from "../../../App"
 import { Link, useNavigate } from "react-router-dom"
 
 export default function Register() {
   const emailInput = useRef(null)
   const passInput = useRef(null)
   const response = useRef(null)
+  const { setCookie } = useContext(fireContext)
   const navigate = useNavigate()
 
   function CreateAccount(email, password) {
     const auth = getAuth()
     createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
+      .then((userCredential) => {
         response.current.innerHTML = "Inscription réussie"
-        navigate("/login")
+        const user = userCredential.user
+        setCookie("user", user, { path: "/" })
+        navigate("/user")
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
@@ -70,9 +74,9 @@ export default function Register() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               onClick={() => {
                 passInput.current.type === "password"
                   ? (passInput.current.type = "text")
