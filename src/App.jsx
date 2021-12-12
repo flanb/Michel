@@ -12,6 +12,7 @@ import Login from "./pages/User/Login/Login"
 import Register from "./pages/User/Register/Register"
 import Add from "./pages/Covoit/Ads/Add/Add"
 import User from "./pages/User/User"
+import Read from "./pages/Covoit/Ads/Read/Read"
 import { useCookies } from "react-cookie"
 
 const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
@@ -77,6 +78,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/covoit" element={<Covoit />} />
         <Route path="/covoit/add" element={<Add />} />
+        <Route path="/covoit/:adsId" element={<Read />} />
         <Route path="/user" element={<User />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

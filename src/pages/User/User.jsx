@@ -5,7 +5,11 @@ import { useContext, useEffect } from "react"
 import { fireContext } from "../../App"
 import { signOut } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
-import { updateProfile } from "firebase/auth"
+import {
+  updateProfile,
+  // updateEmail,
+  // reauthenticateWithCredential,
+} from "firebase/auth"
 
 export default function User() {
   const { cookies, setCookie, auth } = useContext(fireContext)
@@ -17,8 +21,7 @@ export default function User() {
     }
   }, [cookies.user, navigate])
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function updatePseudo(e) {
     updateProfile(auth.currentUser, {
       displayName: e.target[0].value,
     })
@@ -32,6 +35,24 @@ export default function User() {
         console.error(error)
       })
   }
+  // function updateEmailSubmit(e) {
+  //   reauthenticateWithCredential(cookies.user.email, "aaaaaaaa")
+  //     .then(() => {
+  //       updateEmail(auth.currentUser, e.target[0].value)
+  //         .then(() => {
+  //           setCookie("user", {
+  //             ...cookies.user,
+  //             email: e.target[0].value,
+  //           })
+  //         })
+  //         .catch((error) => {
+  //           console.error(error)
+  //         })
+  //     })
+  //     .catch((error) => {
+  //       console.error(error)
+  //     })
+  // }
 
   return (
     <>
@@ -47,14 +68,6 @@ export default function User() {
                   : cookies.user.email}
               </b>
             </p>
-            <form onSubmit={(e) => handleSubmit(e)}>
-              <input
-                type="text"
-                placeholder="Pseudo"
-                defaultValue={cookies.user.displayName}
-              />
-              <Btn type="submit">Valider</Btn>
-            </form>
             <Btn
               onClick={() => {
                 signOut(auth)
@@ -63,6 +76,38 @@ export default function User() {
             >
               Se déconnecter
             </Btn>
+            <div className="form-container">
+              <h3>Définir un pseudo</h3>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  updatePseudo(e)
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder="Pseudo"
+                  defaultValue={cookies.user.displayName}
+                />
+                <Btn type="submit">Valider</Btn>
+              </form>
+            </div>
+            {/* <div className="form-container">
+              <h3>Changer d'adresse mail</h3>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  updateEmailSubmit(e)
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder="Adresse mail"
+                  defaultValue={cookies.user.email}
+                />
+                <Btn type="submit">Valider</Btn>
+              </form>
+            </div> */}
           </>
         ) : null}
       </div>

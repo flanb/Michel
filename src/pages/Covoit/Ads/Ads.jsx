@@ -39,6 +39,7 @@ export default function Ads() {
               {
                 ...ad.data(),
                 duration: response?.rows[0]?.elements[0]?.duration?.value,
+                id: ad.id,
               },
             ])
           }
@@ -49,13 +50,12 @@ export default function Ads() {
 
   return (
     <div className="ads">
-      {adverts.map((ad, index) => {
+      {adverts.map((ad) => {
         const date = new Date(ad.when.seconds * 1000)
         const duration = new Date(ad.duration * 1000)
         const endDate = new Date(date.getTime() + duration.getTime())
-
         return (
-          <Link to="add" key={index} className="ad">
+          <Link to={ad.id} key={ad.id} className="ad">
             <div className="infos">
               <span className="date-start">
                 {date.getHours()}:
