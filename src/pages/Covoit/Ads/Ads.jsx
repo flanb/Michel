@@ -17,7 +17,7 @@ loader.load().then((google) => {
 })
 
 export default function Ads() {
-  const { db, months, days } = useContext(fireContext)
+  const { db, months, days, setCookie, cookies } = useContext(fireContext)
   const [adverts, setAdverts] = useState([])
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Ads() {
             travelMode: "DRIVING",
           },
           (response) => {
-            //convet to array
+            //convert to array
             setAdverts((adverts) => [
               ...adverts,
               {
@@ -48,12 +48,18 @@ export default function Ads() {
     })
   }, [db])
 
+  //set cookie to remember ads list
+  useEffect(() => {
+    setCookie("ads", adverts, { path: "/" })
+  }, [adverts, setCookie])
+
   return (
     <div className="ads">
-      {adverts.map((ad) => {
+      {cookies.ads?.map((ad) => {
         const date = new Date(ad.when.seconds * 1000)
         const duration = new Date(ad.duration * 1000)
         const endDate = new Date(date.getTime() + duration.getTime())
+
         return (
           <Link to={ad.id} key={ad.id} className="ad">
             <div className="infos">

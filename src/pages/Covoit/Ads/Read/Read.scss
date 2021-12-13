@@ -1,0 +1,55 @@
+.read {
+  .infos {
+    display: grid;
+    grid-template: repeat(3, min-content) / repeat(2, min-content) 1fr;
+    gap: 1rem;
+    .date-start {
+      justify-self: end;
+    }
+    .duration {
+      font-size: 0.75rem;
+      justify-self: end;
+      color: #646464;
+      display: flex;
+      align-items: center;
+      gap: 0.1rem;
+      white-space: nowrap;
+    }
+    .line-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .line {
+      position: absolute;
+      border: 1px solid #646464;
+      height: 3rem;
+    }
+    .point {
+      border-radius: 50%;
+      border: 2px solid var(--black);
+      width: 14px;
+      height: 14px;
+      background-color: #ebe4ed;
+      z-index: 1;
+    }
+    .date-finish {
+      grid-row: 3;
+      justify-self: end;
+      color: #646464;
+    }
+    .point-end {
+      grid-row: 3;
+      border-color: #646464;
+    }
+    .start {
+      font-size: 0.9rem;
+    }
+    .finish {
+      font-size: 0.9rem;
+      grid-row: 3;
+      color: #646464;
+    }
+  }
+}
