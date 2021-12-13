@@ -21,6 +21,7 @@ export default function Add() {
       user: cookies.user.displayName
         ? cookies.user.displayName
         : cookies.user.email,
+      description : e.target[4].value
     })
     navigate("/covoit")
   }
@@ -58,6 +59,13 @@ export default function Add() {
             <label className="price">
               Prix ?
               <input required type="number" placeholder="Prix" maxLength="2" />
+            </label>
+            <label>
+              Description
+              <textarea
+                required
+                placeholder="Modèle et couleur du véhicule, chemin particulier, commentaires, etc…"
+              />
             </label>
             <Btn type="submit">Ajouter une annonce</Btn>
           </form>

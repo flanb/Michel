@@ -167,8 +167,21 @@ input {
   outline: none;
   transition: transform 0.2s ease-in-out;
   background-color: transparent;
+  font-weight: var(--regular);
 }
 input:focus-visible {
+  transform: scale(1.025);
+}
+textarea {
+  color: var(--black);
+  border-radius: 0.25rem;
+  font: var(--font);
+  font-weight: var(--regular);
+  font-size: 0.75rem;
+  padding: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+textarea:focus-visible {
   transform: scale(1.025);
 }
 h1 {
@@ -181,10 +194,6 @@ h2 {
   color: var(--color-primary);
   font-weight: var(--bold);
   font-size: 1.5rem;
-}
-textarea {
-  color: var(--black);
-  border-radius: 0.25rem;
 }
 p {
   line-height: 140%;
