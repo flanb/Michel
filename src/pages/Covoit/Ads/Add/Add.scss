@@ -6,15 +6,6 @@
   gap: 4rem;
   align-items: center;
   width: 100%;
-  .back {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    color: var(--color-primary);
-    &::before {
-      background-color: var(--color-secondary);
-    }
-  }
   form {
     display: flex;
     flex-direction: column;

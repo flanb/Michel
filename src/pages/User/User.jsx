@@ -56,7 +56,7 @@ export default function User() {
 
   return (
     <>
-      <div className="user">
+      <div className="user-page">
         {cookies.user ? (
           <>
             <h1>Profil</h1>

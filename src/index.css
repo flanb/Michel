@@ -3,7 +3,7 @@
   --color-secondary: #bfaed9;
   --white: #ffffff;
   --black: #161616;
-  --font: 'Red Hat Display', sans-serif;
+  --font: "Red Hat Display", sans-serif;
   --regular: 600;
   --bold: 800;
 }
@@ -146,7 +146,7 @@ a:active {
 .btn::before,
 a::before {
   z-index: -1;
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 0;
@@ -186,6 +186,16 @@ textarea {
   color: var(--black);
   border-radius: 0.25rem;
 }
-p{
+p {
   line-height: 140%;
+  font-weight: var(--regular);
+}
+.back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: var(--color-primary);
+}
+.back::before {
+  background-color: var(--color-secondary);
 }

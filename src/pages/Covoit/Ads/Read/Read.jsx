@@ -34,7 +34,7 @@ export default function Read() {
 
   return (
     <div className="read">
-      <Btn onClick={() => navigate("/covoit")}>Revenir aux trajets</Btn>
+      <Btn className="back" onClick={() => navigate("/covoit")}>Revenir aux trajets</Btn>
       {date ? (
         <>
           <h1>
@@ -65,7 +65,7 @@ export default function Read() {
                     <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" />
                     <path d="M9 4.5V9L12 10.5" />
                   </svg>
-                  {date?.duration?.getHours()} h
+                  {date?.duration?.getHours()} h{" "}
                   {date?.duration?.getMinutes().toString().padStart(2, "0")}
                 </>
               ) : (
@@ -84,6 +84,33 @@ export default function Read() {
             </span>
             <div className="point point-end"></div>
             <span className="finish">{adData.finish}</span>
+          </div>
+          <div className="price">
+            Prix total <span>{adData.price}</span>
+          </div>
+          <div className="user">
+            <svg
+              width="18"
+              height="20"
+              viewBox="0 0 18 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M17 19V17C17 14.7909 15.2091 13 13 13H5C2.79086 13 1 14.7909 1 17V19" />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M9 9C11.2091 9 13 7.20914 13 5C13 2.79086 11.2091 1 9 1C6.79086 1 5 2.79086 5 5C5 7.20914 6.79086 9 9 9Z"
+              />
+            </svg>
+            <span>{adData.user}</span>
+          </div>
+          <div className="description">
+            Description <p>{adData.description}</p>
           </div>
         </>
       ) : (

@@ -1,11 +1,19 @@
 .read {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 90%;
+  margin: auto;
+  height: 90vh;
+  justify-content: center;
   .infos {
     display: grid;
     grid-template: repeat(3, min-content) / repeat(2, min-content) 1fr;
-    gap: 1rem;
+    gap: 2rem;
     .date-start {
       justify-self: end;
     }
+
     .duration {
       font-size: 0.75rem;
       justify-self: end;
@@ -24,14 +32,14 @@
     .line {
       position: absolute;
       border: 1px solid #646464;
-      height: 3rem;
+      height: 5rem;
     }
     .point {
       border-radius: 50%;
       border: 2px solid var(--black);
       width: 14px;
       height: 14px;
-      background-color: #ebe4ed;
+      background-color: white;
       z-index: 1;
     }
     .date-finish {
@@ -43,12 +51,31 @@
       grid-row: 3;
       border-color: #646464;
     }
-    .start {
-      font-size: 0.9rem;
-    }
+
     .finish {
-      font-size: 0.9rem;
       grid-row: 3;
+      color: #646464;
+    }
+  }
+  .price {
+    display: flex;
+    gap: 1rem;
+    font-weight: var(--regular);
+    span {
+      font-weight: var(--bold);
+      &::after {
+        content: "€";
+      }
+    }
+  }
+  .user {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .description {
+    p {
+      font-size: 0.9rem;
       color: #646464;
     }
   }
