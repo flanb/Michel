@@ -22,6 +22,7 @@ export default function Add() {
         ? cookies.user.displayName
         : cookies.user.email,
       description : e.target[4].value
+
     })
     navigate("/covoit")
   }
