@@ -4,20 +4,9 @@ import { collection, getDocs } from "firebase/firestore"
 import { useContext, useEffect, useState } from "react"
 import { fireContext } from "../../../App"
 import { Link } from "react-router-dom"
-import { Loader } from "@googlemaps/js-api-loader"
-
-const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
-const loader = new Loader({
-  apiKey: FIREBASE_API_KEY,
-  version: "weekly",
-})
-let distanceService
-loader.load().then((google) => {
-  distanceService = new google.maps.DistanceMatrixService()
-})
 
 export default function Ads() {
-  const { db, months, days, setCookie, cookies } = useContext(fireContext)
+  const { db, months, days } = useContext(fireContext)
   const [adverts, setAdverts] = useState([])
 
   useEffect(() => {
@@ -25,46 +14,30 @@ export default function Ads() {
     //collect all adverts
     getDocs(collection(db, "ads")).then((ads) => {
       ads.forEach((ad) => {
-        //collect duration between start and finish location
-        distanceService.getDistanceMatrix(
+        //convert to array
+        setAdverts((adverts) => [
+          ...adverts,
           {
-            origins: [ad.data().start],
-            destinations: [ad.data().finish],
-            travelMode: "DRIVING",
+            ...ad.data(),
+            id: ad.id,
           },
-          (response) => {
-            //convert to array
-            setAdverts((adverts) => [
-              ...adverts,
-              {
-                ...ad.data(),
-                duration: response?.rows[0]?.elements[0]?.duration?.value,
-                id: ad.id,
-              },
-            ])
-          }
-        )
+        ])
       })
     })
   }, [db])
 
-  //set cookie to remember ads list
-  useEffect(() => {
-    setCookie("ads", adverts, { path: "/" })
-  }, [adverts, setCookie])
-
   return (
     <div className="ads">
-      {cookies.ads?.map((ad) => {
+      {adverts?.map((ad) => {
         const date = new Date(ad.when.seconds * 1000)
-        const duration = new Date(ad.duration * 1000)
+        const duration = new Date(ad.duration.seconds * 1000)
         const endDate = new Date(date.getTime() + duration.getTime())
 
         return (
           <Link to={ad.id} key={ad.id} className="ad">
             <div className="infos">
               <span className="date-start">
-                {date.getHours()}:
+                {date.getHours()}h
                 {date.getMinutes().toString().padStart(2, "0")}
               </span>
               <div className="point point-start"></div>
@@ -82,7 +55,7 @@ export default function Ads() {
               <span className="date-finish">
                 {duration.getHours()
                   ? endDate.getHours() +
-                    ":" +
+                    "h" +
                     endDate.getMinutes().toString().padStart(2, "0")
                   : "inconnu"}
               </span>

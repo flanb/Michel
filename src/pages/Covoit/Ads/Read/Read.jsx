@@ -3,23 +3,27 @@ import "./Read.scss"
 import { useNavigate, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { fireContext } from "../../../../App"
+import { doc, getDoc } from "firebase/firestore"
 
 import Btn from "../../../../components/Btn/Btn"
 
 export default function Read() {
   let { adsId } = useParams()
-  const { cookies, days, months } = useContext(fireContext)
+  const { db, days, months } = useContext(fireContext)
   const navigate = useNavigate()
   const [adData, setAdData] = useState({})
   const [date, setDate] = useState({})
+  const docRef = doc(db, "ads", adsId)
 
   useEffect(() => {
-    setAdData(
-      cookies.ads.find((ad) => {
-        return ad.id === adsId
+    getDoc(docRef)
+      .then((ad) => {
+        setAdData(ad.data())
       })
-    )
-  }, [adsId, cookies])
+      .catch((e) => {
+        console.error(e)
+      })
+  }, [docRef])
 
   //parse date
   useEffect(() => {
@@ -34,7 +38,9 @@ export default function Read() {
 
   return (
     <div className="read">
-      <Btn className="back" onClick={() => navigate("/covoit")}>Revenir aux trajets</Btn>
+      <Btn className="back" onClick={() => navigate("/covoit")}>
+        Revenir aux trajets
+      </Btn>
       {date ? (
         <>
           <h1>

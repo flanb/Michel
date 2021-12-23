@@ -31,7 +31,6 @@ export default function Add() {
         travelMode: "DRIVING",
       },
       (response) => {
-        console.log(response.rows[0].elements[0].duration.value)
         addDoc(collection(db, "ads"), {
           start: e.target[0].value,
           finish: e.target[1].value,
@@ -41,9 +40,9 @@ export default function Add() {
             ? cookies.user.displayName
             : cookies.user.email,
           description: e.target[4].value,
-          duration: new Date(response.rows[0].elements[0].duration.value),
+          duration: new Date(response.rows[0].elements[0].duration.value*1000),
         })
-        // navigate("/covoit")
+        navigate("/covoit")
       }
     )
   }
