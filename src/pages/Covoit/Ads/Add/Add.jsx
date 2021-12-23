@@ -1,30 +1,51 @@
+import "./Add.scss"
+
 import { collection, addDoc } from "firebase/firestore"
 import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router"
 import Btn from "../../../../components/Btn/Btn"
 import { Link } from "react-router-dom"
 import { fireContext } from "../../../../App"
-import "./Add.scss"
+import { Loader } from "@googlemaps/js-api-loader"
+
+const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
+const loader = new Loader({
+  apiKey: FIREBASE_API_KEY,
+  version: "weekly",
+})
+let distanceService
+loader.load().then((google) => {
+  distanceService = new google.maps.DistanceMatrixService()
+})
 
 export default function Add() {
   const { db, cookies } = useContext(fireContext)
   const navigate = useNavigate()
 
   function handleSubmit(e) {
-    console.log(e)
     e.preventDefault()
-    addDoc(collection(db, "ads"), {
-      start: e.target[0].value,
-      finish: e.target[1].value,
-      when: new Date(e.target[2].value),
-      price: parseFloat(e.target[3].value),
-      user: cookies.user.displayName
-        ? cookies.user.displayName
-        : cookies.user.email,
-      description : e.target[4].value
-
-    })
-    navigate("/covoit")
+    distanceService.getDistanceMatrix(
+      {
+        origins: [e.target[0].value],
+        destinations: [e.target[1].value],
+        travelMode: "DRIVING",
+      },
+      (response) => {
+        console.log(response.rows[0].elements[0].duration.value)
+        addDoc(collection(db, "ads"), {
+          start: e.target[0].value,
+          finish: e.target[1].value,
+          when: new Date(e.target[2].value),
+          price: parseFloat(e.target[3].value),
+          user: cookies.user.displayName
+            ? cookies.user.displayName
+            : cookies.user.email,
+          description: e.target[4].value,
+          duration: new Date(response.rows[0].elements[0].duration.value),
+        })
+        // navigate("/covoit")
+      }
+    )
   }
   useEffect(() => {
     if (!cookies.user) {
