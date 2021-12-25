@@ -79,4 +79,16 @@
       color: #646464;
     }
   }
+  .read-error{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    span{
+      font-size: 1rem;
+      color: var(--red);
+    }
+    b{
+      font-weight: var(--bold);
+    }
+  }
 }

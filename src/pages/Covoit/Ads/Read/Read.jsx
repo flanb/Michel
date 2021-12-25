@@ -27,11 +27,11 @@ export default function Read() {
 
   //parse date
   useEffect(() => {
-    if (adData.when) {
+    if (adData) {
       setDate({
-        date: new Date(adData.when.seconds * 1000),
+        date: new Date(adData?.when?.seconds * 1000),
         duration: new Date(adData.duration * 1000),
-        endDate: new Date((adData.when.seconds + adData.duration) * 1000),
+        endDate: new Date((adData?.when?.seconds + adData.duration) * 1000),
       })
     }
   }, [adData])
@@ -41,7 +41,7 @@ export default function Read() {
       <Btn className="back" onClick={() => navigate("/covoit")}>
         Revenir aux trajets
       </Btn>
-      {date ? (
+      {adData ? (
         <>
           <h1>
             {days[date?.date?.getDay()]} {date?.date?.getDate()}{" "}
@@ -120,9 +120,10 @@ export default function Read() {
           </div>
         </>
       ) : (
-        <>
+        <div className="read-error">
           <h1>Voyage Introuvable</h1>
-        </>
+          <span>Le voyage <b>{adsId}</b> n'existe pas.</span>
+        </div>
       )}
     </div>
   )
