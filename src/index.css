@@ -186,6 +186,9 @@ textarea {
 textarea:focus-visible {
   transform: scale(1.025);
 }
+hr{
+  width: 100%;
+}
 h1 {
   color: var(--color-primary);
   font-weight: var(--bold);
