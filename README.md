@@ -13,5 +13,5 @@ Talk to michel here : https://michelmontaigne.web.app/
 - [ ] add pointer events everywhere
 - [ ] add feedback section
 - [ ] add a button to go to the top
-- [ ] delete outdated adverts https://github.com/firebase/functions-samples/blob/main/delete-old-child-nodes/functions/index.js
-<!-- - [ ] add gap between first svg and text
+- [ ] add gap between first svg and text
+<!--- [ ] delete outdated adverts https://github.com/firebase/functions-samples/blob/main/delete-old-child-nodes/functions/index.js
