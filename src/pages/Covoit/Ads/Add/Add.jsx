@@ -1,54 +1,70 @@
-import "./Add.scss"
+import './Add.scss'
 
-import { collection, addDoc } from "firebase/firestore"
-import { useContext, useEffect } from "react"
-import { useNavigate } from "react-router"
-import Btn from "../../../../components/Btn/Btn"
-import { Link } from "react-router-dom"
-import { fireContext } from "../../../../App"
-import { Loader } from "@googlemaps/js-api-loader"
+import { addDoc, collection } from 'firebase/firestore'
+import { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router'
+import Btn from '../../../../components/Btn/Btn'
+import { Link } from 'react-router-dom'
+import { fireContext } from '../../../../App'
+import { Loader } from '@googlemaps/js-api-loader'
 
 const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY
 const loader = new Loader({
   apiKey: FIREBASE_API_KEY,
-  version: "weekly",
+  version: 'weekly'
 })
 let distanceService
 loader.load().then((google) => {
   distanceService = new google.maps.DistanceMatrixService()
 })
 
-export default function Add() {
+export default function Add () {
   const { db, cookies } = useContext(fireContext)
   const navigate = useNavigate()
 
-  function handleSubmit(e) {
+  function handleSubmit (e) {
     e.preventDefault()
+    //TODO : better error handling
     distanceService.getDistanceMatrix(
       {
         origins: [e.target[0].value],
         destinations: [e.target[1].value],
-        travelMode: "DRIVING",
+        travelMode: 'DRIVING'
       },
       (response) => {
-        addDoc(collection(db, "ads"), {
-          start: e.target[0].value,
-          finish: e.target[1].value,
-          when: new Date(e.target[2].value),
-          price: parseFloat(e.target[3].value),
-          user: cookies.user.displayName
-            ? cookies.user.displayName
-            : cookies.user.email,
-          description: e.target[4].value,
-          duration: new Date(response.rows[0].elements[0].duration.value*1000),
-        })
-        navigate("/covoit")
+        if (!response)
+        {
+          alert('Erreur de connexion')
+        }
+        if (response.desinationAddresses || response.originAddresses) {
+          addDoc(collection(db, 'ads'), {
+            start: e.target[0].value,
+            finish: e.target[1].value,
+            when: new Date(e.target[2].value),
+            price: parseFloat(e.target[3].value),
+            user: cookies.user.displayName
+              ? cookies.user.displayName
+              : cookies.user.email,
+            //TODO : ask Maxence about call another one api to get user name
+            userId: cookies.user.uid,
+            description: e.target[4].value,
+            duration: new Date(response.rows[0].elements[0].duration.value * 1000),
+          }).then(() => {
+            navigate('/covoit')
+          })
+            .catch((err) => {
+              console.error(err)
+            })
+        } else {
+          alert('Adresse de départ ou d\'arrivée invalide')
+        }
       }
     )
   }
+
   useEffect(() => {
     if (!cookies.user) {
-      navigate("/login")
+      navigate('/login')
     }
   }, [navigate, cookies.user])
 
@@ -63,15 +79,16 @@ export default function Add() {
           <form onSubmit={(e) => handleSubmit(e)}>
             <label>
               D'où partez-vous ?
-              <input required type="text" placeholder="Départ" />
+              <input required type="text" placeholder="Départ"/>
             </label>
             <label>
               Où allez-vous ?
-              <input required type="text" placeholder="Arrivée" />
+              <input required type="text" placeholder="Arrivée"/>
             </label>
+            {/*TODO : cannot select date in the past*/}
             <label>
               Quand partez-vous ?
-              <input required type="datetime-local" placeholder="Date" />
+              <input required type="datetime-local" placeholder="Date"/>
             </label>
             {/* <label>
               Combien de passagers pouvez-vous accepter ?
@@ -79,7 +96,7 @@ export default function Add() {
             </label> */}
             <label className="price">
               Prix ?
-              <input required type="number" placeholder="Prix" maxLength="2" />
+              <input required type="number" placeholder="Prix" maxLength="2"/>
             </label>
             <label>
               Description
