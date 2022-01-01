@@ -8,7 +8,6 @@ Talk to michel here : https://michelmontaigne.web.app/
 
 ## To do
 
-- [ ] add section in read page
 - [ ] add max-width to viewport
 - [ ] add pointer events everywhere
 - [ ] add feedback section
