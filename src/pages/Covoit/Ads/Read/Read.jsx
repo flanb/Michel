@@ -1,11 +1,11 @@
-import './Read.scss'
+import "./Read.scss"
 
-import { useNavigate, useParams } from 'react-router-dom'
-import { useContext, useEffect, useState } from 'react'
-import { fireContext } from '../../../../App'
-import { doc, getDoc } from 'firebase/firestore'
+import { useNavigate, useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { fireContext } from "../../../../App"
+import { doc, getDoc } from "firebase/firestore"
 
-import Btn from '../../../../components/Btn/Btn'
+import Btn from "../../../../components/Btn/Btn"
 
 export default function Read () {
   let { adsId } = useParams()
@@ -13,7 +13,7 @@ export default function Read () {
   const navigate = useNavigate()
   const [adData, setAdData] = useState({})
   const [date, setDate] = useState({})
-  const docRef = doc(db, 'ads', adsId)
+  const docRef = doc(db, "ads", adsId)
 
   useEffect(() => {
     getDoc(docRef)
@@ -38,19 +38,19 @@ export default function Read () {
 
   return (
     <div className="read">
-      <Btn className="back" onClick={() => navigate('/covoit')}>
+      <Btn className="back" onClick={() => navigate("/covoit")}>
         Revenir aux trajets
       </Btn>
       {adData ? (
         <>
           <h1>
-            {days[date?.date?.getDay()]} {date?.date?.getDate()}{' '}
+            {days[date?.date?.getDay()]} {date?.date?.getDate()}{" "}
             {months[date?.date?.getMonth()]}
           </h1>
           <div className="infos">
             <span className="date-start">
               {date?.date?.getHours()}:
-              {date?.date?.getMinutes().toString().padStart(2, '0')}
+              {date?.date?.getMinutes().toString().padStart(2, "0")}
             </span>
             <div className="point point-start"></div>
             <span className="start">{adData.start}</span>
@@ -72,11 +72,11 @@ export default function Read () {
                       d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z"/>
                     <path d="M9 4.5V9L12 10.5"/>
                   </svg>
-                  {date?.duration?.getHours()} h{' '}
-                  {date?.duration?.getMinutes().toString().padStart(2, '0')}
+                  {date?.duration?.getHours()} h{" "}
+                  {date?.duration?.getMinutes().toString().padStart(2, "0")}
                 </>
               ) : (
-                'Trajet'
+                "Trajet"
               )}
             </span>
             <div className="line-container">
@@ -85,9 +85,9 @@ export default function Read () {
             <span className="date-finish">
               {date?.duration?.getHours()
                 ? date?.endDate?.getHours() +
-                ':' +
-                date?.endDate?.getMinutes().toString().padStart(2, '0')
-                : 'inconnu'}
+                ":" +
+                date?.endDate?.getMinutes().toString().padStart(2, "0")
+                : "inconnu"}
             </span>
             <div className="point point-end"></div>
             <span className="finish">{adData.finish}</span>
