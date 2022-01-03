@@ -85,17 +85,12 @@ export default function Add () {
               Où allez-vous ?
               <input required type="text" placeholder="Arrivée"/>
             </label>
-            {/*TODO : */}
             <label>
               Quand partez-vous ?
               <input required type="date"
                      min={new Date().toISOString().split("T")[0]}
                      placeholder="Date"/>
             </label>
-            {/* <label>
-              Combien de passagers pouvez-vous accepter ?
-              <input required type="text" placeholder="Titre" />
-            </label> */}
             <label className="price">
               Prix ?
               <input required type="number" placeholder="Prix" maxLength="2"/>
