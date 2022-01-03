@@ -23,15 +23,15 @@ export default function Read () {
       .catch((e) => {
         console.error(e)
       })
-  }, [docRef])
+  }, [])
 
   //parse date
   useEffect(() => {
     if (adData) {
       setDate({
         date: new Date(adData?.when?.seconds * 1000),
-        duration: new Date(adData.duration * 1000),
-        endDate: new Date((adData?.when?.seconds + adData.duration) * 1000)
+        duration: new Date(adData?.duration?.seconds * 1000),
+        endDate: new Date((adData?.when?.seconds + adData?.duration?.seconds) * 1000)
       })
     }
   }, [adData])
