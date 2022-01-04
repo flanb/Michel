@@ -49,10 +49,10 @@ export default function Read () {
           </h1>
           <div className="infos">
             <span className="date-start">
-              {date?.date?.getHours()}:
+              {date?.date?.getHours()}h
               {date?.date?.getMinutes().toString().padStart(2, "0")}
             </span>
-            <div className="point point-start"></div>
+            <div className="point point-start"/>
             <span className="start">{adData.start}</span>
             <span className="duration">
               {date?.duration?.getHours() ? (
@@ -85,7 +85,7 @@ export default function Read () {
             <span className="date-finish">
               {date?.duration?.getHours()
                 ? date?.endDate?.getHours() +
-                ":" +
+                "h" +
                 date?.endDate?.getMinutes().toString().padStart(2, "0")
                 : "inconnu"}
             </span>
