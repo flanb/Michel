@@ -2,7 +2,7 @@ import "./Add.scss"
 
 import { addDoc, collection } from "firebase/firestore"
 import { useContext, useEffect } from "react"
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router-dom"
 import Btn from "../../../../components/Btn/Btn"
 import { Link } from "react-router-dom"
 import { fireContext } from "../../../../App"
