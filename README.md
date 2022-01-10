@@ -1,4 +1,4 @@
-# Let's go talk to Michel ! 
+# Talk to Michel ! 
 
 🚗 Discuss with Michel and carpool with other students of the IUT Bordeaux Montaigne. 
 
@@ -16,3 +16,4 @@ Talk to michel here : https://michelmontaigne.web.app/
 - [ ] change OpenAI with Firebase ML
 <!--- [ ] delete outdated adverts https://github.com/firebase/functions-samples/blob/main/delete-old-child-nodes/functions/index.js
 - [ ] view my adverts in profile page
+- [ ] admin panel
