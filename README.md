@@ -15,6 +15,7 @@ Talk to michel here : https://michelmontaigne.web.app/
 - [x] add gap between first svg and text
 - [ ] change OpenAI with Firebase ML
 - [ ] admin panel
-<!--- [ ] delete outdated adverts https://github.com/firebase/functions-samples/blob/main/delete-old-child-nodes/functions/index.js
 - [ ] view my adverts in profile page
+<!--- [ ] delete outdated adverts https://github.com/firebase/functions-samples/blob/main/delete-old-child-nodes/functions/index.js
+
 
