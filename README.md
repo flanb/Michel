@@ -8,7 +8,6 @@ Talk to michel here : https://michelmontaigne.web.app/
 
 ## To do
 
-- [x] add max-width to chatbot
 - [ ] add pointer events everywhere
 - [ ] add feedback section
 - [ ] add a button to go to the top
