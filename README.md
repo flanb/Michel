@@ -11,7 +11,6 @@ Talk to michel here : https://michelmontaigne.web.app/
 - [ ] add pointer events everywhere
 - [ ] add feedback section
 - [ ] add a button to go to the top
-- [x] add gap between first svg and text
 - [ ] change OpenAI with Firebase ML
 - [ ] admin panel
 - [ ] view my adverts in profile page
